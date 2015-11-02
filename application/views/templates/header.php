@@ -1,6 +1,18 @@
+<!DOCTYPE html>
 <html>
-<head>
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notix | HCET Jabalpur</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
-    <img src="<?php echo site_url('img/notix-logo.svg'); ?>">
+    <div class="header">
+        <div class="container">
+            <span class="site-title">
+                <!-- <img class="notix-logo" src="img/notix-logo.svg"> -->
+                Notix
+            </span>
+        </div>
+    </div>
