@@ -1,32 +1,37 @@
+@import 'reset.scss';
+@import '_bits.scss';
 // Google Fonts
-@import url(https://fonts.googleapis.com/css?family=Merriweather:400,300,700|Noto+Sans:400,700);
+@import url(//fonts.googleapis.com/css?family=Merriweather:400,300,700|Noto+Sans:400,700);
 
 $merriweather: 'Merriweather', serif;
 $noto-sans: 'Noto Sans', sans-serif;
-$bg-color: #eee;
+$bg-color: #efebf7;
 $accent-color: #673ab7;
 
-@mixin vh-center(){
-    position: absolute;
+@mixin vh-center($position: absolute){
+    position: $position;
     top: 50%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
 }
 
-@mixin h-center(){
-    position: absolute;
+@mixin v-center($position: relative) {
+    position: $position;
     top: 50%;
-    transform: translate(0, -50%);
-    -moz-transform: translate(0, -50%);
-    -webkit-transform: translate(0, -50%);
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
 }
 
-@mixin debug-border($color){
+@mixin db($color, $style: solid){
+    // db: debug border
     // border for block debugging
-    border: 2px solid $color;
+    border: 2px $style $color;
 }
 
 body{
@@ -36,16 +41,15 @@ body{
 }
 
 .header {
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: 10%;
+    height: 5.5em;
     background-color: $accent-color;
     color: white;
 
     .container {
         width: 80%;
         height: 100%;
-        padding: 10px;
         margin: 0 auto;
         @include vh-center();
 
@@ -53,14 +57,48 @@ body{
             font-family: $noto-sans;
             font-weight: bold;
             font-size: 2em;
-            @include h-center();
-            // @include debug-border(red);
+            display: inline-block;
+            @include v-center(absolute);
 
             .notix-logo{
-                position: absolute;
-                left: 0;
-                height: 40px;
+                height: 1.8em;
+                vertical-align: middle;
             }
         }
+    }
+}
+
+.footer {
+    color: white;
+    background-color: #3d226d;
+    padding: 2.5% 5%;
+    text-align: center;
+}
+
+.home {
+    .parallax {
+        position: relative;
+        background-image: url("../img/hcet-bg.png");
+        height: 500px;
+        width: 100%;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        color: white;
+        
+        p {
+            @include vh-center();
+            font-family: $merriweather;
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 2.5%;
     }
 }
