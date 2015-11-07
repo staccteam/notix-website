@@ -8,8 +8,8 @@ class Site extends CI_Controller{
 	public function index(){
 		$data['title'] = 'Home';
 
-		$this->load->view('templates/_header');
-		$this->load->view('site/home');
+		// $this->load->view('templates/_header');
+		$this->load->view('site/home', $data);
 		$this->load->view('templates/_footer');
 	}
 
