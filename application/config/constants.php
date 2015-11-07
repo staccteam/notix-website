@@ -87,3 +87,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 // Custome Constants
 define('PASSWORD_HASH_STRENGTH', 8);
 define('PASSWORD_HASH_PORTABLE', false);
+define('DB_PREFIX', 'notix_');
