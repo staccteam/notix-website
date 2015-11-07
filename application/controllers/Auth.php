@@ -39,6 +39,12 @@ class Auth extends CI_Controller{
 
 		if(! $isPresent){
 			$this->student_model->register($firstName, $lastName, $email, $password, $mobile, $enrollment, $branch, $active, $verify);
+			if ($this->input->is_ajax_request()){
+				$response = ['response'=>true];
+				$this->output->set_header('Access-Control-Allow-Origin: *');
+				$this->output->set_output(json_encode($response));
+			}
+			redirect('site/login');
 		}
 	}
 
@@ -56,6 +62,12 @@ class Auth extends CI_Controller{
 					$this->session->set_userdata('stud_email', $stud['email']);
 					$this->session->set_userdata('stud_mobile', $stud['mobile']);
 					$this->session->set_userdata('stud_enrollment', $stud['enrollment']);
+				}
+
+				if ($this->input->is_ajax_request()){
+					$response = ['response'=>true];
+					$this->output->set_header('Access-Control-Allow-Origin: *');
+					$this->output->set_output(json_encode($response));
 				}
 				redirect('student/index');
 			}
