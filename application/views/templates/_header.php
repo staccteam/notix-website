@@ -14,9 +14,14 @@
 <body>
     <div class="header">
         <div class="container">
-            <span class="site-title">
-                <img class="notix-logo" src="img/notix-logo.svg">
+            <span class="site-title" onclick="window.location='<?= base_url(); ?>'">
+                <img class="notix-logo" src="<?= base_url(); ?>img/notix-logo.svg">
                 <span>Notix</span>
+            </span>
+            <span class="navlinks">
+                <ul>
+                    <li><?php echo anchor('site/about', 'About'); ?></li>
+                </ul>
             </span>
         </div>
     </div>

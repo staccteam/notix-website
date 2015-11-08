@@ -1,4 +1,4 @@
-@import url(//fonts.googleapis.com/css?family=Merriweather:400,300,700|Noto+Sans:400,700);
+@import url("//fonts.googleapis.com/css?family=Merriweather:400,300,700|Noto+Sans:400,700");
 a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
   margin: 0;
   padding: 0;
@@ -30,6 +30,14 @@ body {
   font-family: "Noto Sans", sans-serif;
   background-color: #efebf7;
   color: black; }
+  body a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white; }
+    body a:hover {
+      color: #FFC107; }
+  body:hover {
+    cursor: default; }
 
 .header {
   position: relative;
@@ -63,6 +71,19 @@ body {
       .header .container .site-title .notix-logo {
         height: 1.8em;
         vertical-align: middle; }
+      .header .container .site-title:hover {
+        cursor: pointer; }
+    .header .container .navlinks {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      right: 0; }
+      .header .container .navlinks li {
+        float: left;
+        margin-left: 2em; }
 
 .footer {
   color: white;
@@ -73,9 +94,9 @@ body {
 .home .parallax {
   position: relative;
   background-image: url("../img/hcet-bg.png");
-  height: 500px;
+  height: 300px;
   width: 100%;
-  background-position: 50% 50%;
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -97,5 +118,34 @@ body {
   width: 80%;
   margin: 0 auto;
   padding: 2.5%; }
+  .home .container .login-form {
+    width: 35%; }
+    .home .container .login-form p {
+      font-family: "Merriweather", serif;
+      font-weight: bold;
+      font-size: 2em;
+      margin: 1.2em 0;
+      color: #3d226d; }
+    .home .container .login-form form {
+      margin: 1.2em 0;
+      padding: 0; }
+      .home .container .login-form form div {
+        width: 100%;
+        text-align: center; }
+      .home .container .login-form form input {
+        margin: 1.2em 0;
+        font-family: "Noto Sans", sans-serif;
+        font-size: 1.2em; }
+      .home .container .login-form form .form-fields {
+        padding: 0.5em;
+        width: 100%;
+        box-sizing: border-box; }
+      .home .container .login-form form .login-btn {
+        background-color: #3d226d;
+        color: white;
+        border: none;
+        padding: 1em;
+        margin: 1.5em 0;
+        width: 100%; }
 
 /*# sourceMappingURL=style.css.map */
