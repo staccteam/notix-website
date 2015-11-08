@@ -39,6 +39,20 @@ function check_password($value, $hashed){
 
 // }
 
+function admin_auth(){
+	$ci =& get_instance();
+	if (! $ci->session->userdata('admin_username')){
+		redirect('admin');
+	}
+}
+
+function admin_isLoggedIn(){
+	$ci =& get_instance();
+	if ($ci->session->userdata('admin_username')){
+		redirect('admin/home');
+	}
+}
+
 
 
 ?>

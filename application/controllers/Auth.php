@@ -11,6 +11,10 @@ class Auth extends CI_Controller{
 		$this->load->model('student_model');
 	}
 
+	public function salt($value){
+		var_dump(hash_password($value));
+	}
+
 	// This function will take the values from the form and register the user into the database
 	public function regStudent(){
 		$firstName = $this->input->post('firstName');
@@ -73,6 +77,21 @@ class Auth extends CI_Controller{
 			}
 		}else{
 			return false;
+		}
+	}
+
+	// Performs the authentication for the admin
+	public function login(){
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$isValid = $this->admin_model->login($username, $password);
+
+		if ($isValid){
+			$this->session->set_userdata('admin_username', $username);
+			redirect('admin/home');
+		}else{
+			$this->session->set_flashdata('error', 'The user is invalid!');
+			redirect('admin');
 		}
 	}
 }
