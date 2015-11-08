@@ -1,19 +1,53 @@
-@import url(https://fonts.googleapis.com/css?family=Merriweather:400,300,700|Noto+Sans:400,700);
+@import url("//fonts.googleapis.com/css?family=Merriweather:400,300,700|Noto+Sans:400,700");
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:after, blockquote:before, q:after, q:before {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
 body {
   font-family: "Noto Sans", sans-serif;
-  background-color: #eee;
+  background-color: #efebf7;
   color: black; }
+  body a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white; }
+    body a:hover {
+      color: #FFC107; }
+  body:hover {
+    cursor: default; }
 
 .header {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 10%;
+  height: 5.5em;
   background-color: #673ab7;
   color: white; }
   .header .container {
     width: 80%;
     height: 100%;
-    padding: 10px;
     margin: 0 auto;
     position: absolute;
     top: 50%;
@@ -21,19 +55,97 @@ body {
     margin-right: -50%;
     transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%); }
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); }
     .header .container .site-title {
       font-family: "Noto Sans", sans-serif;
       font-weight: bold;
       font-size: 2em;
+      display: inline-block;
       position: absolute;
       top: 50%;
-      transform: translate(0, -50%);
-      -moz-transform: translate(0, -50%);
-      -webkit-transform: translate(0, -50%); }
+      transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%); }
       .header .container .site-title .notix-logo {
-        position: absolute;
-        left: 0;
-        height: 40px; }
+        height: 1.8em;
+        vertical-align: middle; }
+      .header .container .site-title:hover {
+        cursor: pointer; }
+    .header .container .navlinks {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      right: 0; }
+      .header .container .navlinks li {
+        float: left;
+        margin-left: 2em; }
+
+.footer {
+  color: white;
+  background-color: #3d226d;
+  padding: 2.5% 5%;
+  text-align: center; }
+
+.home .parallax {
+  position: relative;
+  background-image: url("../img/hcet-bg.png");
+  height: 300px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: white; }
+  .home .parallax p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-family: "Merriweather", serif;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center; }
+.home .container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2.5%; }
+  .home .container .login-form {
+    width: 35%; }
+    .home .container .login-form p {
+      font-family: "Merriweather", serif;
+      font-weight: bold;
+      font-size: 2em;
+      margin: 1.2em 0;
+      color: #3d226d; }
+    .home .container .login-form form {
+      margin: 1.2em 0;
+      padding: 0; }
+      .home .container .login-form form div {
+        width: 100%;
+        text-align: center; }
+      .home .container .login-form form input {
+        margin: 1.2em 0;
+        font-family: "Noto Sans", sans-serif;
+        font-size: 1.2em; }
+      .home .container .login-form form .form-fields {
+        padding: 0.5em;
+        width: 100%;
+        box-sizing: border-box; }
+      .home .container .login-form form .login-btn {
+        background-color: #3d226d;
+        color: white;
+        border: none;
+        padding: 1em;
+        margin: 1.5em 0;
+        width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

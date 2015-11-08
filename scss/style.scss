@@ -1,65 +1,172 @@
+@import 'reset.scss';
+@import '_bits.scss';
 // Google Fonts
-@import url(https://fonts.googleapis.com/css?family=Merriweather:400,300,700|Noto+Sans:400,700);
+@import url('//fonts.googleapis.com/css?family=Merriweather:400,300,700|Noto+Sans:400,700');
 
 $merriweather: 'Merriweather', serif;
 $noto-sans: 'Noto Sans', sans-serif;
-$bg-color: #eee;
-$accent-color: #673ab7;
+$bg-color: #efebf7;
+$theme-color-light: #673ab7;
+$theme-color-dark: #3d226d;
+$accent-color: #FFC107;
 
-@mixin vh-center(){
-    position: absolute;
+@mixin vh-center($position: absolute){
+    position: $position;
     top: 50%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
 }
 
-@mixin h-center(){
-    position: absolute;
+@mixin v-center($position: relative) {
+    position: $position;
     top: 50%;
-    transform: translate(0, -50%);
-    -moz-transform: translate(0, -50%);
-    -webkit-transform: translate(0, -50%);
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
 }
 
-@mixin debug-border($color){
+@mixin db($color: red, $style: solid){
+    // db: debug border
     // border for block debugging
-    border: 2px solid $color;
+    border: 2px $style $color;
 }
 
 body{
     font-family: $noto-sans;
     background-color: $bg-color;
     color: black;
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+        &:hover {
+            color: $accent-color;
+        }
+    }
+    &:hover {
+        cursor: default;
+    }
 }
 
 .header {
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: 10%;
-    background-color: $accent-color;
+    height: 5.5em;
+    background-color: $theme-color-light;
     color: white;
 
     .container {
         width: 80%;
         height: 100%;
-        padding: 10px;
         margin: 0 auto;
         @include vh-center();
 
-        .site-title{
+        .site-title {
             font-family: $noto-sans;
             font-weight: bold;
             font-size: 2em;
-            @include h-center();
-            // @include debug-border(red);
+            display: inline-block;
+            @include v-center(absolute);
 
-            .notix-logo{
-                position: absolute;
-                left: 0;
-                height: 40px;
+            .notix-logo {
+                height: 1.8em;
+                vertical-align: middle;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .navlinks {
+            @include v-center(absolute);
+            right: 0;
+
+            li {
+                float: left;
+                margin-left: 2em;
+            }
+        }
+    }
+}
+
+.footer {
+    color: white;
+    background-color: $theme-color-dark;
+    padding: 2.5% 5%;
+    text-align: center;
+}
+
+.home {
+    .parallax {
+        position: relative;
+        background-image: url("../img/hcet-bg.png");
+        height: 300px;
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        color: white;
+        
+        p {
+            @include vh-center();
+            font-family: $merriweather;
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 2.5%;
+
+        .login-form {
+            width: 35%;
+
+            p {
+                font-family: $merriweather;
+                font-weight: bold;
+                font-size: 2em;
+                margin: 1.2em 0;
+                color: $theme-color-dark;
+            }
+
+            form {
+                margin: 1.2em 0;
+                padding: 0;
+
+                div {
+                    width: 100%;
+                    text-align: center;
+                }
+
+                input {
+                    margin: 1.2em 0;
+                    font-family: $noto-sans;
+                    font-size: 1.2em;
+                }
+
+                .form-fields {
+                    padding: 0.5em;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+
+                .login-btn {
+                    background-color: $theme-color-dark;
+                    color: white;
+                    border: none;
+                    padding: 1em;
+                    margin: 1.5em 0;
+                    width: 100%;
+                }
             }
         }
     }
