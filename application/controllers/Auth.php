@@ -9,6 +9,7 @@ class Auth extends CI_Controller{
 		parent::__construct();
 		$this->load->helper('custom');
 		$this->load->model('student_model');
+		$this->load->model('faculty_model');
 	}
 
 	public function salt($value){
@@ -92,6 +93,21 @@ class Auth extends CI_Controller{
 		}else{
 			$this->session->set_flashdata('error', 'The user is invalid!');
 			redirect('admin');
+		}
+	}
+
+	public function loginFaculty(){
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+
+		$isValid = $this->faculty_model->login($username, $password);
+
+		if ($isValid){
+			$this->session->set_userdata('faculty_username', $username);
+			redirect('faculty/home');
+		}else{
+			$this->session->set_flashdata('error', 'Invalid Credentials');
+			redirect('/');
 		}
 	}
 }

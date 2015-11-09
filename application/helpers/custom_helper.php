@@ -39,7 +39,7 @@ function check_password($value, $hashed){
 
 // }
 
-function admin_auth(){
+function admin_isLoggedOut(){
 	$ci =& get_instance();
 	if (! $ci->session->userdata('admin_username')){
 		redirect('admin');
@@ -53,6 +53,19 @@ function admin_isLoggedIn(){
 	}
 }
 
+// Faculty Login Authenticate
+function faculty_isLoggedIn(){
+	$ci =& get_instance();
+	if ($ci->session->userdata('faculty_username')){
+		redirect('faculty/home');
+	}
+}
 
+function faculty_isLoggedOut(){
+	$ci =& get_instance();
+	if (! $ci->session->userdata('faculty_username')){
+		redirect('/');
+	}
+}
 
 ?>

@@ -7,7 +7,7 @@ class Admin extends CI_Controller{
 		$this->load->helper('custom');
 		$this->load->model('admin_model');
 
-		admin_auth();
+		admin_isLoggedOut();
 	}
 
 	// This will render the home page from the admin/home view

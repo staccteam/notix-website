@@ -7,6 +7,7 @@ class Site extends CI_Controller{
     }
 
     public function index(){
+        faculty_isLoggedIn();
         $data['title'] = 'Home';
 
         $this->load->view('templates/_header');
