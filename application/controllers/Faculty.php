@@ -13,7 +13,9 @@ class Faculty extends CI_Controller{
 	public function home(){
 		$data['title'] = 'Home';
 
-		$this->load->view('faculty/home');
+        $this->load->view('templates/_header');
+        $this->load->view('faculty/home');
+		$this->load->view('templates/_footer');
 	}
 	
 }

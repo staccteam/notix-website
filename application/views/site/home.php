@@ -10,9 +10,6 @@
                     <input type="text" name="userid" class="form-fields" placeholder="username or email"></input><br>
                     <input type="password" name="password" class="form-fields" placeholder="password"></input><br>
                 </div>
-                <label style="font-size:1.1em;">
-                    <input type="checkbox">&nbsp;Remember me</input>
-                </label>
                 <input type="submit" class="login-btn" name="login-btn" value="LOGIN"></input>
             <?= form_close(); ?>
         </div>

@@ -29,10 +29,16 @@ $accent-color: #FFC107;
     -ms-transform: translateY(-50%);
 }
 
-@mixin db($color: red, $style: solid){
+@mixin db($color: red, $style: solid) {
     // db: debug border
     // border for block debugging
     border: 2px $style $color;
+}
+
+@mixin flow-fix() {
+    // Document flow hack for the view sandwiched between _header and _footer
+    display: inline-block;
+    width: 100%;
 }
 
 @mixin login-mixin(){
@@ -95,7 +101,7 @@ body{
     font-family: $oxygen;
     background-color: $bg-color;
     color: black;
-    line-height: 1.5em;
+    line-height: 150%;
 
     a {
         text-decoration: none;
@@ -107,6 +113,17 @@ body{
     }
     &:hover {
         cursor: default;
+    }
+
+    h1 {
+        font-family: $merriweather;
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    h2 {
+        font-family: $merriweather;
+        font-size: 1.5em;
     }
 }
 
@@ -152,8 +169,7 @@ body{
 }
 
 .footer {
-    width: 100%;
-    display: inline-block;
+    @include flow-fix();
 
     .container {
         color: white;
@@ -164,8 +180,7 @@ body{
 }
 
 .home {
-    display: inline-block;
-    width: 100%;
+    @include flow-fix();
 
     .parallax {
         position: relative;
@@ -211,7 +226,53 @@ body{
 }
 
 .admin {
-    display: inline-block;
-    width: 100%;
+    @include flow-fix();
     @include login-mixin();
+}
+
+.admin-home {
+    @include flow-fix();
+    .container {
+        width: 80%;
+        margin: 2em auto;
+
+        section {
+            form {
+                margin: 1em 0;
+
+                input {
+                    font-family: $oxygen;
+                    font-size: 1.1em;
+                    padding: 0.5%;
+                    margin-right: 1%;
+                }
+            }
+        }
+    }
+}
+
+.faculty-home {
+    @include flow-fix();
+    .container{
+        width: 80%;
+        margin: 2em auto;
+        form {
+            margin: 1em 0;
+            input {
+                font-family: $oxygen;
+                font-size: 1.1em;
+                padding: 1.2%;
+
+                &[type="submit"] {
+                    margin: 2% 0;
+                }
+            }
+            textarea {
+                font-family: $oxygen;
+                font-size: 1.1em;
+                padding: 1.2%;
+                vertical-align: top;
+            }
+        }
+    }
 }

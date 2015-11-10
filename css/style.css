@@ -70,7 +70,7 @@ body {
   font-family: "Oxygen", sans-serif;
   background-color: #efebf7;
   color: black;
-  line-height: 1.5em; }
+  line-height: 150%; }
   body a {
     text-decoration: none;
     font-weight: bold;
@@ -79,6 +79,13 @@ body {
       color: #FFC107; }
   body:hover {
     cursor: default; }
+  body h1 {
+    font-family: "Merriweather", serif;
+    font-size: 2em;
+    font-weight: bold; }
+  body h2 {
+    font-family: "Merriweather", serif;
+    font-size: 1.5em; }
 
 .header {
   position: relative;
@@ -127,8 +134,8 @@ body {
         margin-left: 2em; }
 
 .footer {
-  width: 100%;
-  display: inline-block; }
+  display: inline-block;
+  width: 100%; }
   .footer .container {
     color: white;
     background-color: #3d226d;
@@ -247,5 +254,39 @@ body {
         .admin .container .login-form form .login-btn:hover {
           background-color: rgba(61, 34, 109, 0.8);
           cursor: pointer; }
+
+.admin-home {
+  display: inline-block;
+  width: 100%; }
+  .admin-home .container {
+    width: 80%;
+    margin: 2em auto; }
+    .admin-home .container section form {
+      margin: 1em 0; }
+      .admin-home .container section form input {
+        font-family: "Oxygen", sans-serif;
+        font-size: 1.1em;
+        padding: 0.5%;
+        margin-right: 1%; }
+
+.faculty-home {
+  display: inline-block;
+  width: 100%; }
+  .faculty-home .container {
+    width: 80%;
+    margin: 2em auto; }
+    .faculty-home .container form {
+      margin: 1em 0; }
+      .faculty-home .container form input {
+        font-family: "Oxygen", sans-serif;
+        font-size: 1.1em;
+        padding: 1.2%; }
+        .faculty-home .container form input[type="submit"] {
+          margin: 2% 0; }
+      .faculty-home .container form textarea {
+        font-family: "Oxygen", sans-serif;
+        font-size: 1.1em;
+        padding: 1.2%;
+        vertical-align: top; }
 
 /*# sourceMappingURL=style.css.map */
