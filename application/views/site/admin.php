@@ -1,7 +1,14 @@
-<?= form_open('auth/login'); ?>
-
-<input name="username" placeholder="username"><br />
-<input name="password" placeholder="password" type="password"> <br />
-<input type="submit" value="login">
-
-<?= form_close(); ?>
+<div class="admin">
+    <div class="container">
+        <div class="login-form col span_1_of_2">
+            <p>Admin Login</p>
+            <?= form_open('auth/login'); ?>
+                <div>
+                    <input type="text" name="userid" class="form-fields" placeholder="username"></input><br>
+                    <input type="password" name="password" class="form-fields" placeholder="password"></input><br>
+                </div>
+                <input type="submit" class="login-btn" name="login-btn" value="LOGIN"></input>
+            <?= form_close(); ?>
+        </div>
+    </div>
+</div>

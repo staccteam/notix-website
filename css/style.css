@@ -127,70 +127,76 @@ body {
         margin-left: 2em; }
 
 .footer {
-  color: white;
-  background-color: #3d226d;
-  padding: 2.5% 5%;
-  text-align: center; }
-
-.home .parallax {
-  position: relative;
-  background-image: url("../img/hcet-bg.png");
-  height: 400px;
   width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  color: white; }
-  .home .parallax p {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    font-family: "Merriweather", serif;
-    font-size: 3em;
-    font-weight: bold;
-    text-align: center;
-    line-height: 125%; }
-.home .container {
-  padding: 0;
-  width: 80%;
-  margin: 0 auto;
-  clear: both; }
-  .home .container .login-form p {
-    font-family: "Merriweather", serif;
-    font-weight: bold;
-    font-size: 2em;
-    color: #3d226d; }
-  .home .container .login-form form {
-    margin: 1.2em 0 0 0;
-    padding: 0; }
-    .home .container .login-form form div {
-      width: 100%;
-      text-align: center; }
-    .home .container .login-form form input {
+  display: inline-block; }
+  .footer .container {
+    color: white;
+    background-color: #3d226d;
+    padding: 2.5% 5%;
+    text-align: center; }
+
+.home {
+  display: inline-block;
+  width: 100%; }
+  .home .parallax {
+    position: relative;
+    background-image: url("../img/hcet-bg.png");
+    height: 400px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white; }
+    .home .parallax p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      font-family: "Merriweather", serif;
+      font-size: 3em;
+      font-weight: bold;
+      text-align: center;
+      line-height: 125%; }
+  .home .container {
+    padding: 0;
+    width: 80%;
+    margin: 0 auto;
+    clear: both; }
+    .home .container .login-form p {
+      font-family: "Merriweather", serif;
+      font-weight: bold;
+      font-size: 2em;
+      color: #3d226d; }
+    .home .container .login-form form {
       margin: 1.2em 0 0 0;
-      font-family: "Oxygen", sans-serif;
-      font-size: 1.2em;
-      font-weight: lighter; }
-    .home .container .login-form form .form-fields {
-      padding: 0.5em;
-      width: 100%;
-      box-sizing: border-box; }
-    .home .container .login-form form .login-btn {
-      background-color: #3d226d;
-      color: white;
-      border: none;
-      padding: 1em 0;
-      margin: 1.5em 0 0 0;
-      width: 100%; }
-      .home .container .login-form form .login-btn:hover {
-        background-color: rgba(61, 34, 109, 0.8);
-        cursor: pointer; }
+      padding: 0; }
+      .home .container .login-form form div {
+        width: 100%;
+        text-align: center; }
+      .home .container .login-form form input {
+        margin: 1.2em 0 0 0;
+        font-family: "Oxygen", sans-serif;
+        font-size: 1.2em;
+        font-weight: lighter; }
+      .home .container .login-form form .form-fields {
+        padding: 0.5em;
+        width: 100%;
+        box-sizing: border-box; }
+      .home .container .login-form form .login-btn {
+        background-color: #3d226d;
+        color: white;
+        border: none;
+        padding: 1em 0;
+        margin: 1.5em 0 0 0;
+        width: 100%; }
+        .home .container .login-form form .login-btn:hover {
+          background-color: rgba(61, 34, 109, 0.8);
+          cursor: pointer; }
   .home .container .message-box .wrapper {
     padding: 2em;
     background-color: #d1c3e9;
@@ -202,5 +208,44 @@ body {
       font-size: 2em; }
     .home .container .message-box .wrapper p {
       margin: 1.2em 0; }
+
+.admin {
+  display: inline-block;
+  width: 100%; }
+  .admin .container {
+    padding: 0;
+    width: 80%;
+    margin: 0 auto;
+    clear: both; }
+    .admin .container .login-form p {
+      font-family: "Merriweather", serif;
+      font-weight: bold;
+      font-size: 2em;
+      color: #3d226d; }
+    .admin .container .login-form form {
+      margin: 1.2em 0 0 0;
+      padding: 0; }
+      .admin .container .login-form form div {
+        width: 100%;
+        text-align: center; }
+      .admin .container .login-form form input {
+        margin: 1.2em 0 0 0;
+        font-family: "Oxygen", sans-serif;
+        font-size: 1.2em;
+        font-weight: lighter; }
+      .admin .container .login-form form .form-fields {
+        padding: 0.5em;
+        width: 100%;
+        box-sizing: border-box; }
+      .admin .container .login-form form .login-btn {
+        background-color: #3d226d;
+        color: white;
+        border: none;
+        padding: 1em 0;
+        margin: 1.5em 0 0 0;
+        width: 100%; }
+        .admin .container .login-form form .login-btn:hover {
+          background-color: rgba(61, 34, 109, 0.8);
+          cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */

@@ -35,6 +35,62 @@ $accent-color: #FFC107;
     border: 2px $style $color;
 }
 
+@mixin login-mixin(){
+    .container {
+        padding: 0;
+        width: 80%;
+        margin: 0 auto;
+        clear: both;
+
+        .login-form {
+
+            p {
+                font-family: $merriweather;
+                font-weight: bold;
+                font-size: 2em;
+                color: $theme-color-dark;
+            }
+
+            form {
+                margin: 1.2em 0 0 0;
+                padding: 0;
+
+                div {
+                    width: 100%;
+                    text-align: center;
+                }
+
+                input {
+                    margin: 1.2em 0 0 0;
+                    font-family: $oxygen;
+                    font-size: 1.2em;
+                    font-weight: lighter;
+                }
+
+                .form-fields {
+                    padding: 0.5em;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+
+                .login-btn {
+                    background-color: $theme-color-dark;
+                    color: white;
+                    border: none;
+                    padding: 1em 0;
+                    margin: 1.5em 0 0 0;
+                    width: 100%;
+
+                    &:hover {
+                        background-color: rgba(61,34,109,0.8);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
 body{
     font-family: $oxygen;
     background-color: $bg-color;
@@ -96,13 +152,21 @@ body{
 }
 
 .footer {
-    color: white;
-    background-color: $theme-color-dark;
-    padding: 2.5% 5%;
-    text-align: center;
+    width: 100%;
+    display: inline-block;
+
+    .container {
+        color: white;
+        background-color: $theme-color-dark;
+        padding: 2.5% 5%;
+        text-align: center;
+    }
 }
 
 .home {
+    display: inline-block;
+    width: 100%;
+
     .parallax {
         position: relative;
         background-image: url("../img/hcet-bg.png");
@@ -124,59 +188,9 @@ body{
         }
     }
 
+    @include login-mixin();
+
     .container {
-        padding: 0;
-        width: 80%;
-        margin: 0 auto;
-        clear: both;
-
-        .login-form {
-
-            p {
-                font-family: $merriweather;
-                font-weight: bold;
-                font-size: 2em;
-                color: $theme-color-dark;
-            }
-
-            form {
-                margin: 1.2em 0 0 0;
-                padding: 0;
-
-                div {
-                    width: 100%;
-                    text-align: center;
-                }
-
-                input {
-                    margin: 1.2em 0 0 0;
-                    font-family: $oxygen;
-                    font-size: 1.2em;
-                    font-weight: lighter;
-                }
-
-                .form-fields {
-                    padding: 0.5em;
-                    width: 100%;
-                    box-sizing: border-box;
-                }
-
-                .login-btn {
-                    background-color: $theme-color-dark;
-                    color: white;
-                    border: none;
-                    padding: 1em 0;
-                    margin: 1.5em 0 0 0;
-                    width: 100%;
-
-                    &:hover {
-                        background-color: rgba(61,34,109,0.8);
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-
         .message-box {
             .wrapper {
                 padding: 2em;
@@ -194,4 +208,10 @@ body{
             }
         }
     }
+}
+
+.admin {
+    display: inline-block;
+    width: 100%;
+    @include login-mixin();
 }
