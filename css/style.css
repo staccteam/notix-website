@@ -26,10 +26,44 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+.col {
+  display: block;
+  float: left;
+  margin: 4% 0 4% 4%; }
+  .col:first-child {
+    margin-left: 0; }
+
+.group:before,
+.group:after {
+  content: "";
+  display: table; }
+
+.group:after {
+  clear: both; }
+
+.group {
+  zoom: 1;
+  /* For IE 6/7 */ }
+
+/*  GRID OF TWO  */
+.span_2_of_2 {
+  width: 100%; }
+
+.span_1_of_2 {
+  width: 48%; }
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+@media only screen and (max-width: 480px) {
+  .col {
+    margin: 1% 0 1% 0%; } }
+@media only screen and (max-width: 480px) {
+  .span_2_of_2, .span_1_of_2 {
+    width: 100%; } }
 body {
   font-family: "Noto Sans", sans-serif;
   background-color: #efebf7;
-  color: black; }
+  color: black;
+  line-height: 1.5em; }
   body a {
     text-decoration: none;
     font-weight: bold;
@@ -94,7 +128,7 @@ body {
 .home .parallax {
   position: relative;
   background-image: url("../img/hcet-bg.png");
-  height: 300px;
+  height: 400px;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -115,37 +149,47 @@ body {
     font-weight: bold;
     text-align: center; }
 .home .container {
+  padding: 0;
   width: 80%;
   margin: 0 auto;
-  padding: 2.5%; }
-  .home .container .login-form {
-    width: 35%; }
-    .home .container .login-form p {
+  clear: both; }
+  .home .container .login-form p {
+    font-family: "Merriweather", serif;
+    font-weight: bold;
+    font-size: 2em;
+    color: #3d226d; }
+  .home .container .login-form form {
+    margin: 1.2em 0;
+    padding: 0; }
+    .home .container .login-form form div {
+      width: 100%;
+      text-align: center; }
+    .home .container .login-form form input {
+      margin: 1.2em 0;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 1.2em; }
+    .home .container .login-form form .form-fields {
+      padding: 0.5em;
+      width: 100%;
+      box-sizing: border-box; }
+    .home .container .login-form form .login-btn {
+      background-color: #3d226d;
+      color: white;
+      border: none;
+      padding: 1em;
+      margin: 1.5em 0;
+      width: 100%; }
+  .home .container .message-box .wrapper {
+    padding: 2em;
+    background-color: #d1c3e9;
+    border: 2px solid #3d226d;
+    border-radius: 25px; }
+    .home .container .message-box .wrapper h1 {
       font-family: "Merriweather", serif;
       font-weight: bold;
-      font-size: 2em;
+      font-size: 2em; }
+    .home .container .message-box .wrapper p {
       margin: 1.2em 0;
-      color: #3d226d; }
-    .home .container .login-form form {
-      margin: 1.2em 0;
-      padding: 0; }
-      .home .container .login-form form div {
-        width: 100%;
-        text-align: center; }
-      .home .container .login-form form input {
-        margin: 1.2em 0;
-        font-family: "Noto Sans", sans-serif;
-        font-size: 1.2em; }
-      .home .container .login-form form .form-fields {
-        padding: 0.5em;
-        width: 100%;
-        box-sizing: border-box; }
-      .home .container .login-form form .login-btn {
-        background-color: #3d226d;
-        color: white;
-        border: none;
-        padding: 1em;
-        margin: 1.5em 0;
-        width: 100%; }
+      font-family: "Merriweather", serif; }
 
 /*# sourceMappingURL=style.css.map */
