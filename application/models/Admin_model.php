@@ -33,7 +33,7 @@ class Admin_model extends CI_Model{
     	return $query->result_array();
     }
 
-    public function createFaculty($firstName, $lastName, $email. $mobile, $username, $password, $branch, $status){
+    public function createFaculty($firstName, $lastName, $email, $mobile, $username, $password, $branch, $status){
         $password = hash_password($password);
         $data = [
             'first_name' => $firstName,
@@ -54,7 +54,7 @@ class Admin_model extends CI_Model{
         }
     }
 
-    public function updateFaculty($id, $firstName, $lastName, $email. $mobile, $username, $password, $branch, $status){
+    public function updateFaculty($id, $firstName, $lastName, $email, $mobile, $username, $password, $branch, $status){
         $data = [
             'first_name' => $firstName,
             'last_name' => $lastName,

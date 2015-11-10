@@ -10,6 +10,7 @@ class Auth extends CI_Controller{
 		$this->load->helper('custom');
 		$this->load->model('student_model');
 		$this->load->model('faculty_model');
+		$this->load->model('admin_model');
 	}
 
 	public function salt($value){
