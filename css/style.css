@@ -1,4 +1,4 @@
-@import url("//fonts.googleapis.com/css?family=Merriweather:400,300,700|Noto+Sans:400,700");
+@import url(//fonts.googleapis.com/css?family=Merriweather:400,300,700|Oxygen:400,300,700);
 a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
   margin: 0;
   padding: 0;
@@ -29,9 +29,13 @@ table {
 .col {
   display: block;
   float: left;
-  margin: 4% 0 4% 4%; }
+  margin: 4% 0 4% 4%;
+  /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */ }
   .col:first-child {
     margin-left: 0; }
+  @media only screen and (max-width: 768px) {
+    .col {
+      margin: 1% 0 1% 0%; } }
 
 .group:before,
 .group:after {
@@ -47,20 +51,23 @@ table {
 
 /*  GRID OF TWO  */
 .span_2_of_2 {
-  width: 100%; }
+  width: 100%;
+  /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */ }
+  @media only screen and (max-width: 768px) {
+    .span_2_of_2 {
+      width: 100%;
+      margin: 5% 0; } }
 
 .span_1_of_2 {
-  width: 48%; }
+  width: 48%;
+  /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */ }
+  @media only screen and (max-width: 768px) {
+    .span_1_of_2 {
+      width: 100%;
+      margin: 5% 0; } }
 
-/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
-@media only screen and (max-width: 480px) {
-  .col {
-    margin: 1% 0 1% 0%; } }
-@media only screen and (max-width: 480px) {
-  .span_2_of_2, .span_1_of_2 {
-    width: 100%; } }
 body {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Oxygen", sans-serif;
   background-color: #efebf7;
   color: black;
   line-height: 1.5em; }
@@ -92,7 +99,7 @@ body {
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%); }
     .header .container .site-title {
-      font-family: "Noto Sans", sans-serif;
+      font-family: "Oxygen", sans-serif;
       font-weight: bold;
       font-size: 2em;
       display: inline-block;
@@ -147,7 +154,8 @@ body {
     font-family: "Merriweather", serif;
     font-size: 3em;
     font-weight: bold;
-    text-align: center; }
+    text-align: center;
+    line-height: 125%; }
 .home .container {
   padding: 0;
   width: 80%;
@@ -159,15 +167,16 @@ body {
     font-size: 2em;
     color: #3d226d; }
   .home .container .login-form form {
-    margin: 1.2em 0;
+    margin: 1.2em 0 0 0;
     padding: 0; }
     .home .container .login-form form div {
       width: 100%;
       text-align: center; }
     .home .container .login-form form input {
-      margin: 1.2em 0;
-      font-family: "Noto Sans", sans-serif;
-      font-size: 1.2em; }
+      margin: 1.2em 0 0 0;
+      font-family: "Oxygen", sans-serif;
+      font-size: 1.2em;
+      font-weight: lighter; }
     .home .container .login-form form .form-fields {
       padding: 0.5em;
       width: 100%;
@@ -176,9 +185,12 @@ body {
       background-color: #3d226d;
       color: white;
       border: none;
-      padding: 1em;
-      margin: 1.5em 0;
+      padding: 1em 0;
+      margin: 1.5em 0 0 0;
       width: 100%; }
+      .home .container .login-form form .login-btn:hover {
+        background-color: rgba(61, 34, 109, 0.8);
+        cursor: pointer; }
   .home .container .message-box .wrapper {
     padding: 2em;
     background-color: #d1c3e9;
@@ -189,7 +201,6 @@ body {
       font-weight: bold;
       font-size: 2em; }
     .home .container .message-box .wrapper p {
-      margin: 1.2em 0;
-      font-family: "Merriweather", serif; }
+      margin: 1.2em 0; }
 
 /*# sourceMappingURL=style.css.map */

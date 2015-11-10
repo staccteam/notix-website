@@ -1,10 +1,9 @@
 @import 'reset.scss';
 @import '_bits.scss';
 // Google Fonts
-@import url('//fonts.googleapis.com/css?family=Merriweather:400,300,700|Noto+Sans:400,700');
-
+@import url(//fonts.googleapis.com/css?family=Merriweather:400,300,700|Oxygen:400,300,700);
 $merriweather: 'Merriweather', serif;
-$noto-sans: 'Noto Sans', sans-serif;
+$oxygen: 'Oxygen', sans-serif;
 $bg-color: #efebf7;
 $theme-color-light: #673ab7;
 $theme-color-dark: #3d226d;
@@ -37,7 +36,7 @@ $accent-color: #FFC107;
 }
 
 body{
-    font-family: $noto-sans;
+    font-family: $oxygen;
     background-color: $bg-color;
     color: black;
     line-height: 1.5em;
@@ -69,7 +68,7 @@ body{
         @include vh-center();
 
         .site-title {
-            font-family: $noto-sans;
+            font-family: $oxygen;
             font-weight: bold;
             font-size: 2em;
             display: inline-block;
@@ -121,6 +120,7 @@ body{
             font-size: 3em;
             font-weight: bold;
             text-align: center;
+            line-height: 125%;
         }
     }
 
@@ -140,7 +140,7 @@ body{
             }
 
             form {
-                margin: 1.2em 0;
+                margin: 1.2em 0 0 0;
                 padding: 0;
 
                 div {
@@ -149,9 +149,10 @@ body{
                 }
 
                 input {
-                    margin: 1.2em 0;
-                    font-family: $noto-sans;
+                    margin: 1.2em 0 0 0;
+                    font-family: $oxygen;
                     font-size: 1.2em;
+                    font-weight: lighter;
                 }
 
                 .form-fields {
@@ -164,9 +165,14 @@ body{
                     background-color: $theme-color-dark;
                     color: white;
                     border: none;
-                    padding: 1em;
-                    margin: 1.5em 0;
+                    padding: 1em 0;
+                    margin: 1.5em 0 0 0;
                     width: 100%;
+
+                    &:hover {
+                        background-color: rgba(61,34,109,0.8);
+                        cursor: pointer;
+                    }
                 }
             }
         }
@@ -184,7 +190,6 @@ body{
                 }
                 p {
                     margin: 1.2em 0;
-                    font-family: $merriweather;
                 }
             }
         }
