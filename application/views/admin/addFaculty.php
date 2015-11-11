@@ -1,8 +1,7 @@
 <div class="admin-addfaculty">
     <div class="container group">
-        <h1><?= $title ?></h1>
         <section>
-            <div class="col span_1_of_2">
+            <div class="col span_2_of_4">
                 <h2>Create Faculty</h2>
                 <?= form_open('admin/create') ?>
                     <input name="first_name" type="text" placeholder="First Name"></input>
@@ -25,7 +24,7 @@
             </div>
         </section>
         <section>
-            <div class="col span_1_of_2">
+            <div class="col span_2_of_4">
                 <h2>Delete Faculty</h2>
                 <p style="margin: 1% 0; color: gray;">
                     Select the username of the faculty to be deleted.

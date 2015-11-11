@@ -1,14 +1,16 @@
 <div class="admin-home">
     <div class="container">
-        <?php if (isset($list_faculties[0])): ?>
-            <!-- 
-            List Faculties here...  
-            The Faculty information is stored inside an array: $list_faculties
-            Loop through the array to get the stored information.
-            -->
-        <?php endif; ?>
-        <div>
-            <?= anchor('admin/addFaculty', 'Add Faculty'); ?>
+        <div class="tile-grid group">
+            <h1>Faculty Management</h1>
+            <span onclick="window.location='<?= base_url(); ?>admin/addFaculty'" class="col span_1_of_4 tile-item">
+                <p><i class="fa fa-plus"></i> Add</p>
+            </span>
+            <span onclick="window.location='<?= base_url(); ?>admin/edit'" class="col span_1_of_4 tile-item">
+                <p><i class="fa fa-pencil"></i> Edit</p>
+            </span>
+            <span onclick="window.location='<?= base_url(); ?>admin/delete'" class="col span_1_of_4 tile-item">
+                <p><i class="fa fa-trash-o"></i> Delete</p>
+            </span>
         </div>
     </div>
 </div>

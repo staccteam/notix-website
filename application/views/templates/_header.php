@@ -21,7 +21,6 @@
             <span class="navlinks">
                 <ul>
                     <li><?= anchor('site/about', 'About'); ?></li>
-                    <li><?= anchor('faculty/logout', 'Logout'); ?></li>
                 </ul>
             </span>
         </div>

@@ -12,7 +12,7 @@ class Admin extends CI_Controller{
 
     // This will render the home page from the admin/home view
     public function home(){
-        $data['title'] = "Admin Home";
+        $data['title'] = "Home";
         $data['list_faculties'] = $this->admin_model->getFaculties();
 
         $this->load->view('templates/_header', $data);
@@ -22,7 +22,7 @@ class Admin extends CI_Controller{
     }
 
     public function addFaculty(){
-        $data['title'] = "Admin - Add Faculty";
+        $data['title'] = "Add Faculty";
         $data['faculties_username'] = $this->admin_model->getAllFacultiesUsername();
 
         $this->load->view('templates/_header', $data);
@@ -32,7 +32,7 @@ class Admin extends CI_Controller{
     }
 
     public function editFaculty($id){
-        $data['title'] = 'Admin - Edit Faculty';
+        $data['title'] = 'Edit Faculty';
         // Fetch the faculty details with its id
         $data['faculty'] = $this->admin_model->getFacultyById($id);
         // Pass the faculty data to the view

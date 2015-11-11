@@ -1,11 +1,12 @@
 <div class="admin-header">
     <div class="container">
-        <span class="page-title" onclick="window.location='<?= base_url(); ?>admin/home'">
-            <i class="fa fa-user-secret"></i>
+        <span class="section-title" onclick="window.location='<?= base_url(); ?>admin/home'">
+            <p><a onclick="window.location='<?= base_url(); ?>admin/home'"><i class="fa fa-tasks">&nbsp;Admin Panel</i></a></p>
+            <p class="page-title"><?= $title ?></p>
         </span>
         <span class="navlinks">
             <ul>
-                <li><?= anchor('admin/logout', 'Logout'); ?></li>
+                <li><button onclick="window.location='<?= base_url(); ?>admin/logout'" class="ghost">Logout</button></li>
             </ul>
         </span>
     </div>

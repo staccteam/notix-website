@@ -127,14 +127,238 @@ body{
     }
 }
 
-@import 'templates/header.scss';
-@import 'templates/footer.scss';
+.header {
+    position: relative;
+    width: 100%;
+    height: 5.5em;
+    background-color: $theme-color-light;
+    color: white;
 
-@import 'pages/home.scss';
+    a {
+        color: white;
+    }
 
-@import 'templates/admin-header.scss';
-@import 'pages/admin.scss';
-@import 'pages/admin-home.scss';
-@import 'pages/admin-addfaculty.scss';
+    .container {
+        width: 80%;
+        height: 100%;
+        margin: 0 auto;
+        @include vh-center();
 
-@import 'pages/faculty-home.scss';
+        .site-title {
+            font-family: $oxygen;
+            font-weight: bold;
+            font-size: 2em;
+            display: inline-block;
+            @include v-center(absolute);
+
+            .notix-logo {
+                height: 1.8em;
+                vertical-align: middle;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .navlinks {
+            @include v-center(absolute);
+            right: 0;
+
+            li {
+                float: left;
+                margin-left: 2em;
+            }
+        }
+    }
+}
+
+.footer {
+    @include flow-fix();
+    a {
+        color: white;
+    }
+    .container {
+        color: white;
+        background-color: $theme-color-dark;
+        padding: 2.5% 5%;
+        text-align: center;
+    }
+}
+
+.home {
+    @include flow-fix();
+
+    .parallax {
+        position: relative;
+        background-image: url("../img/hcet-bg.png");
+        height: 400px;
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        color: white;
+        
+        p {
+            @include vh-center();
+            font-family: $merriweather;
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            line-height: 125%;
+        }
+    }
+
+    @include login-mixin();
+
+    .container {
+        .message-box {
+            .wrapper {
+                padding: 2em;
+                background-color: #d1c3e9;
+                border: 2px solid #3d226d;
+                border-radius: 25px;
+                h1 {
+                    font-family: $merriweather;
+                    font-weight: bold;
+                    font-size: 2em;
+                }
+                p {
+                    margin: 1.2em 0;
+                }
+            }
+        }
+    }
+}
+
+.admin-header {
+    position: relative;
+    line-height: 120%;
+    width: 100%;
+    height: 5em;
+    font-size: 3em;
+    color: white;
+    background: url('../img/admin-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    a {
+        color: white;
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        @include vh-center();
+
+        .page-title{
+            font-size: 0.6em;
+        }
+
+        .navlinks {
+            @include v-center(absolute);
+            right: 0;
+
+            li {
+                float: left;
+                margin-left: 2em;
+            }
+            button.ghost {
+                font-family: $oxygen;
+                background-color: transparent;
+                font-size: 0.5em;
+                border: 2px solid white;
+                color: white;
+                padding: 0em;
+                box-sizing: border-box;
+                width: 100px;
+                height: 50px;
+                text-align: center;
+                border-radius: 3px;
+                transition: all 0.35s ease-in-out;
+                &:hover {
+                    background-color: rgba(61,34,109,0.6);
+                    color: #fff;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+}
+
+.admin {
+    @include flow-fix();
+    @include login-mixin();
+}
+
+.admin-home {
+    @include flow-fix();
+    .container {
+        width: 80%;
+        margin: 2em auto;
+        .tile-grid {
+            .tile-item {
+                background: $theme-color-light;
+                height: 250px;
+                width: 250px;
+                position: relative;
+                color: white;
+                font-size: 2em;
+                p {
+                    @include vh-center(absolute);
+                }
+                &:hover{
+                    cursor: pointer;
+                    background: rgba(103, 58, 183, 0.8);
+                }
+            }
+        }
+    }
+}
+
+.admin-addfaculty {
+    @include flow-fix();
+    .container {
+        width: 80%;
+        margin: 2em auto;
+        section {
+            form {
+                margin: 1em 0;
+
+                input {
+                    font-family: $oxygen;
+                    font-size: 1.1em;
+                    padding: 0.5%;
+                    margin-right: 1%;
+                }
+            }
+        }
+    }
+}
+
+.faculty-home {
+    @include flow-fix();
+    .container{
+        width: 80%;
+        margin: 2em auto;
+        form {
+            margin: 1em 0;
+            input {
+                font-family: $oxygen;
+                font-size: 1.1em;
+                padding: 1.2%;
+
+                &[type="submit"] {
+                    margin: 2% 0;
+                }
+            }
+            textarea {
+                font-family: $oxygen;
+                font-size: 1.1em;
+                padding: 1.2%;
+                vertical-align: top;
+            }
+        }
+    }
+}

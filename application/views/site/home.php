@@ -3,7 +3,7 @@
         <p>An all new way to connect is here.</p>
     </section>
     <div class="container group">
-        <div class="login-form col span_1_of_2">
+        <div class="login-form col span_2_of_4">
             <p>Faculty Login</p>
             <?= form_open('auth/faculty/login'); ?>
                 <div>
@@ -13,7 +13,7 @@
                 <input type="submit" class="login-btn" name="login-btn" value="LOGIN"></input>
             <?= form_close(); ?>
         </div>
-        <div class="message-box col span_1_of_2">
+        <div class="message-box col span_2_of_4">
             <div class="wrapper">
                 <h1>What is Notix?</h1>
                 <p>

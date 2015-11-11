@@ -26,19 +26,17 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/*  COLUMN SETUP  */
 .col {
   display: block;
   float: left;
-  margin: 4% 0 4% 4%;
-  /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */ }
-  .col:first-child {
-    margin-left: 0; }
-  @media only screen and (max-width: 768px) {
-    .col {
-      margin: 1% 0 1% 0%; } }
+  margin: 4% 0 4% 4%; }
 
-.group:before,
-.group:after {
+.col:first-child {
+  margin-left: 0; }
+
+/*  GROUPING  */
+.group:before, .group:after {
   content: "";
   display: table; }
 
@@ -49,23 +47,26 @@ table {
   zoom: 1;
   /* For IE 6/7 */ }
 
-/*  GRID OF TWO  */
-.span_2_of_2 {
-  width: 100%;
-  /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */ }
-  @media only screen and (max-width: 768px) {
-    .span_2_of_2 {
-      width: 100%;
-      margin: 5% 0; } }
+/*  GRID OF FOUR  */
+.span_4_of_4 {
+  width: 100%; }
 
-.span_1_of_2 {
-  width: 48%;
-  /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */ }
-  @media only screen and (max-width: 768px) {
-    .span_1_of_2 {
-      width: 100%;
-      margin: 5% 0; } }
+.span_3_of_4 {
+  width: 74%; }
 
+.span_2_of_4 {
+  width: 48%; }
+
+.span_1_of_4 {
+  width: 22%; }
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+  .col {
+    margin: 2% 0 2% 0%; }
+
+  .span_1_of_4, .span_2_of_4, .span_3_of_4, .span_4_of_4 {
+    width: 100%; } }
 body {
   font-family: "Oxygen", sans-serif;
   background-color: #efebf7;
@@ -220,24 +221,60 @@ body {
       margin: 1.2em 0; }
 
 .admin-header {
-  display: inline-block;
+  position: relative;
+  line-height: 120%;
   width: 100%;
-  width: 100%;
-  height: 300px;
+  height: 5em;
+  font-size: 3em;
   color: white;
-  background: #3e226d;
-  background: -moz-linear-gradient(top, #3e226d 0%, #683ab7 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, #3e226d), color-stop(100%, #683ab7));
-  background: -webkit-linear-gradient(top, #3e226d 0%, #683ab7 100%);
-  background: -o-linear-gradient(top, #3e226d 0%, #683ab7 100%);
-  background: -ms-linear-gradient(top, #3e226d 0%, #683ab7 100%);
-  background: linear-gradient(to bottom, #3e226d 0%, #683ab7 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e226d', endColorstr='#683ab7', GradientType=0 ); }
+  background: url("../img/admin-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; }
   .admin-header a {
     color: white; }
   .admin-header .container {
     width: 80%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); }
+    .admin-header .container .page-title {
+      font-size: 0.6em; }
+    .admin-header .container .navlinks {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      right: 0; }
+      .admin-header .container .navlinks li {
+        float: left;
+        margin-left: 2em; }
+      .admin-header .container .navlinks button.ghost {
+        font-family: "Oxygen", sans-serif;
+        background-color: transparent;
+        font-size: 0.5em;
+        border: 2px solid white;
+        color: white;
+        padding: 0em;
+        box-sizing: border-box;
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        border-radius: 3px;
+        transition: all 0.35s ease-in-out; }
+        .admin-header .container .navlinks button.ghost:hover {
+          background-color: rgba(61, 34, 109, 0.6);
+          color: #fff;
+          cursor: pointer; }
 
 .admin {
   display: inline-block;
@@ -284,6 +321,25 @@ body {
   .admin-home .container {
     width: 80%;
     margin: 2em auto; }
+    .admin-home .container .tile-grid .tile-item {
+      background: #673ab7;
+      height: 250px;
+      width: 250px;
+      position: relative;
+      color: white;
+      font-size: 2em; }
+      .admin-home .container .tile-grid .tile-item p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%); }
+      .admin-home .container .tile-grid .tile-item:hover {
+        cursor: pointer;
+        background: rgba(103, 58, 183, 0.8); }
 
 .admin-addfaculty {
   display: inline-block;

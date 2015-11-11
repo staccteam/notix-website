@@ -1,6 +1,6 @@
 <div class="admin">
     <div class="container">
-        <div class="login-form col span_1_of_2">
+        <div class="login-form col span_2_of_4">
             <?= $sess; ?>
             <p>Admin Login</p>
             <?= form_open('auth/login'); ?>
