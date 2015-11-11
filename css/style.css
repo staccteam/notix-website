@@ -73,8 +73,7 @@ body {
   line-height: 150%; }
   body a {
     text-decoration: none;
-    font-weight: bold;
-    color: white; }
+    font-weight: bold; }
     body a:hover {
       color: #FFC107; }
   body:hover {
@@ -93,6 +92,8 @@ body {
   height: 5.5em;
   background-color: #673ab7;
   color: white; }
+  .header a {
+    color: white; }
   .header .container {
     width: 80%;
     height: 100%;
@@ -136,6 +137,8 @@ body {
 .footer {
   display: inline-block;
   width: 100%; }
+  .footer a {
+    color: white; }
   .footer .container {
     color: white;
     background-color: #3d226d;
@@ -216,6 +219,26 @@ body {
     .home .container .message-box .wrapper p {
       margin: 1.2em 0; }
 
+.admin-header {
+  display: inline-block;
+  width: 100%;
+  width: 100%;
+  height: 300px;
+  color: white;
+  background: #3e226d;
+  background: -moz-linear-gradient(top, #3e226d 0%, #683ab7 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #3e226d), color-stop(100%, #683ab7));
+  background: -webkit-linear-gradient(top, #3e226d 0%, #683ab7 100%);
+  background: -o-linear-gradient(top, #3e226d 0%, #683ab7 100%);
+  background: -ms-linear-gradient(top, #3e226d 0%, #683ab7 100%);
+  background: linear-gradient(to bottom, #3e226d 0%, #683ab7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e226d', endColorstr='#683ab7', GradientType=0 ); }
+  .admin-header a {
+    color: white; }
+  .admin-header .container {
+    width: 80%;
+    margin: 0 auto; }
+
 .admin {
   display: inline-block;
   width: 100%; }
@@ -261,9 +284,16 @@ body {
   .admin-home .container {
     width: 80%;
     margin: 2em auto; }
-    .admin-home .container section form {
+
+.admin-addfaculty {
+  display: inline-block;
+  width: 100%; }
+  .admin-addfaculty .container {
+    width: 80%;
+    margin: 2em auto; }
+    .admin-addfaculty .container section form {
       margin: 1em 0; }
-      .admin-home .container section form input {
+      .admin-addfaculty .container section form input {
         font-family: "Oxygen", sans-serif;
         font-size: 1.1em;
         padding: 0.5%;

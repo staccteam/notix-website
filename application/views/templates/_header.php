@@ -20,7 +20,7 @@
             </span>
             <span class="navlinks">
                 <ul>
-                    <li><?php echo anchor('site/about', 'About'); ?></li>
+                    <li><?= anchor('site/about', 'About'); ?></li>
                     <li><?= anchor('faculty/logout', 'Logout'); ?></li>
                 </ul>
             </span>

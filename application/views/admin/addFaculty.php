@@ -1,6 +1,6 @@
-<div class="admin-home">
+<div class="admin-addfaculty">
     <div class="container group">
-        <h1>Admin Control Panel</h1>
+        <h1><?= $title ?></h1>
         <section>
             <div class="col span_1_of_2">
                 <h2>Create Faculty</h2>
@@ -31,12 +31,11 @@
                     Select the username of the faculty to be deleted.
                 </p>
                 <?= form_open('admin/deleteFaculty'); ?>
-                    <?php if (isset($faculties_username[0])): ?>
-                        
+                    <?php if (isset($faculties_username[0])): ?>                        
                         <select name="username">
                             <option disabled selected>select...</option>
                             <?php foreach ($faculties_username as $faculty): ?>
-                            <option value="<?= $faculty['id']; ?>"><?= $faculty['username']; ?></option>
+                                <option value="<?= $faculty['id']; ?>"><?= $faculty['username']; ?></option>
                             <?php endforeach; ?>
                         </select>
                         <input type="submit" value="Delete"/>

@@ -15,25 +15,28 @@ class Admin extends CI_Controller{
         $data['title'] = "Admin Home";
         $data['list_faculties'] = $this->admin_model->getFaculties();
 
+        $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/home', $data);
         $this->load->view('templates/_footer');
     }
 
     public function addFaculty(){
-        $data['title'] = "Admin- Add Faculty";
+        $data['title'] = "Admin - Add Faculty";
         $data['faculties_username'] = $this->admin_model->getAllFacultiesUsername();
 
+        $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/addFaculty', $data);
         $this->load->view('templates/_footer');
     }
 
     public function editFaculty($id){
-        $data['title'] = 'Edit Faculty';
+        $data['title'] = 'Admin - Edit Faculty';
         // Fetch the faculty details with its id
         $data['faculty'] = $this->admin_model->getFacultyById($id);
         // Pass the faculty data to the view
+        $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/edit');
         $this->load->view('templates/_footer');
