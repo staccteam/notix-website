@@ -1,0 +1,7 @@
+.admin-home {
+    @include flow-fix();
+    .container {
+        width: 80%;
+        margin: 2em auto;
+    }
+}

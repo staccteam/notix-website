@@ -1,0 +1,12 @@
+.footer {
+    @include flow-fix();
+    a {
+        color: white;
+    }
+    .container {
+        color: white;
+        background-color: $theme-color-dark;
+        padding: 2.5% 5%;
+        text-align: center;
+    }
+}

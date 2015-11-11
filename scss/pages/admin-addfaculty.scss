@@ -1,0 +1,19 @@
+.admin-addfaculty {
+    @include flow-fix();
+    .container {
+        width: 80%;
+        margin: 2em auto;
+        section {
+            form {
+                margin: 1em 0;
+
+                input {
+                    font-family: $oxygen;
+                    font-size: 1.1em;
+                    padding: 0.5%;
+                    margin-right: 1%;
+                }
+            }
+        }
+    }
+}
