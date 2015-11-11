@@ -102,11 +102,12 @@ class Auth extends CI_Controller{
 		$password = $this->input->post('password');
 
 		$isValid = $this->faculty_model->login($username, $password);
-
+		var_dump($isValid);
 		if ($isValid){
 			$this->session->set_userdata('faculty_username', $username);
 			redirect('faculty/home');
 		}else{
+			die();
 			$this->session->set_flashdata('error', 'Invalid Credentials');
 			redirect('/');
 		}

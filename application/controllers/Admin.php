@@ -12,14 +12,20 @@ class Admin extends CI_Controller{
 
     // This will render the home page from the admin/home view
     public function home(){
-        $this->load->view('templates/_header');
-        $this->load->view('admin/home');
+        $data['title'] = "Admin Home";
+        $data['list_faculties'] = $this->admin_model->getFaculties();
+
+        $this->load->view('templates/_admin_header', $data);
+        $this->load->view('admin/home', $data);
         $this->load->view('templates/_footer');
     }
 
     public function addFaculty(){
-        $this->load->view('templates/_header');
-        $this->load->view('admin/add');
+        $data['title'] = "Admin- Add Faculty";
+        $data['faculties_username'] = $this->admin_model->getAllFacultiesUsername();
+
+        $this->load->view('templates/_admin_header', $data);
+        $this->load->view('admin/addFaculty', $data);
         $this->load->view('templates/_footer');
     }
 
@@ -28,18 +34,19 @@ class Admin extends CI_Controller{
         // Fetch the faculty details with its id
         $data['faculty'] = $this->admin_model->getFacultyById($id);
         // Pass the faculty data to the view
-        $this->load->view('templates/_header');
+        $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/edit');
         $this->load->view('templates/_footer');
     }
 
     public function logout(){
         $this->session->unset_userdata('admin_username');
+        redirect('/admin');
     }
 
     public function create(){
         $firstName = $this->input->post('first_name');
-        $last_name = $this->input->post('last_name');
+        $lastName = $this->input->post('last_name');
         $email = $this->input->post('email');
         $mobile = $this->input->post('mobile');
         $username = $this->input->post('username');
@@ -47,7 +54,7 @@ class Admin extends CI_Controller{
         $branch = $this->input->post('branch');
         $status = true;
 
-        $isSuccessful = $this->admin_model->createFaculty($firstName, $lastName, $email. $mobile, $username, $password, $branch, $status);
+        $isSuccessful = $this->admin_model->createFaculty($firstName, $lastName, $email, $mobile, $username, $password, $branch, $status);
 
         if ($isSuccessful){
             if ($this->input->is_ajax_request()){
@@ -86,7 +93,8 @@ class Admin extends CI_Controller{
         }
     }
     
-    public function deleteFaculty($id){
+    public function deleteFaculty(){
+        $id = $this->input->post('username');
         $isDeleted = $this->admin_model->deleteFaculty($id);
         if ($isDeleted){
             redirect('admin/home');

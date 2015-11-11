@@ -14,14 +14,14 @@
 <body>
     <div class="header">
         <div class="container">
-            <span class="site-title" onclick="window.location='<?= base_url(); ?>'">
+            <span class="site-title" onclick="window.location='<?= base_url(); ?>admin/home'">
                 <img class="notix-logo" src="<?= base_url(); ?>img/notix-logo.svg">
                 <span>Notix</span>
             </span>
             <span class="navlinks">
                 <ul>
                     <li><?php echo anchor('site/about', 'About'); ?></li>
-                    <li><?= anchor('faculty/logout', 'Logout'); ?></li>
+                    <li><?= anchor('admin/logout', 'Logout'); ?></li>
                 </ul>
             </span>
         </div>

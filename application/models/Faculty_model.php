@@ -8,9 +8,10 @@ class Faculty_model extends CI_Model{
     public function login($username, $password){
     	if ($this->checkUsername($username)){
     		$faculty = $this->getFacultyByUsername($username);
+            $isValid = check_password($password, $faculty[0]['password']);
 
-    		if (check_password($password, $faculty[0]['password'])){
-    			return true;
+    		if ($isValid){
+                return true;
     		}else{
     			return false;
     		}

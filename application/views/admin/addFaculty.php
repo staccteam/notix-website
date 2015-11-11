@@ -1,0 +1,52 @@
+<div class="admin-home">
+    <div class="container group">
+        <h1>Admin Control Panel</h1>
+        <section>
+            <div class="col span_1_of_2">
+                <h2>Create Faculty</h2>
+                <?= form_open('admin/create') ?>
+                    <input name="first_name" type="text" placeholder="First Name"></input>
+                    <input name="last_name" type="text" placeholder="Last Name"></input><br><br>
+                    <input name="email" type="text" placeholder="Email"></input>
+                    <input name="mobile" type="text" placeholder="Mobile Number"></input><br><br>
+                    <input name="username" type="text" placeholder="Username"></input>
+                    <input name="password" type="text" placeholder="Password"></input><br><br>
+                    Branch:&nbsp;
+                    <select name="branch">
+                        <option value="volvo">Mech</option>
+                        <option value="saab">Civil</option>
+                        <option value="mercedes">EC</option>
+                        <option value="audi">CS</option>
+                        <option value="audi">Elex</option>
+                        <option value="audi">IT</option>
+                    </select><br><br>
+                    <input type="submit" value="Create"/>
+                <?= form_close(); ?>
+            </div>
+        </section>
+        <section>
+            <div class="col span_1_of_2">
+                <h2>Delete Faculty</h2>
+                <p style="margin: 1% 0; color: gray;">
+                    Select the username of the faculty to be deleted.
+                </p>
+                <?= form_open('admin/deleteFaculty'); ?>
+                    <?php if (isset($faculties_username[0])): ?>
+                        
+                        <select name="username">
+                            <option disabled selected>select...</option>
+                            <?php foreach ($faculties_username as $faculty): ?>
+                            <option value="<?= $faculty['id']; ?>"><?= $faculty['username']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <input type="submit" value="Delete"/>
+                    <?php else: ?>
+                        <p style="margin: 1% 0; color: gray;">
+                            There are no faculties entry in the database. Create a Faculty First.
+                        </p>
+                    <?php endif; ?>
+                <?= form_close(); ?>
+            </div>
+        </section>
+    </div>
+</div>

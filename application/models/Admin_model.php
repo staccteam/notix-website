@@ -5,6 +5,14 @@ class Admin_model extends CI_Model{
         $this->load->database();
     }
 
+    public function addAdmin($username, $password){
+        $data = [
+            'username' => $username,
+            'password' => hash_password($password)
+        ];
+        $this->db->insert(DB_PREFIX.'admins', $data);
+    }
+
     public function login($username, $password){
     	if($this->checkUsername($username)){
     		$admin = $this->getAdminByUsername($username);
@@ -46,7 +54,7 @@ class Admin_model extends CI_Model{
             'status' => $status
         ];
         $this->db->insert(DB_PREFIX.'faculties', $data);
-        $rowsAffected = $this->db->rows_affected();
+        $rowsAffected = $this->db->affected_rows();
         if ($rows_affected > 0){
             return true;
         }else{
@@ -67,7 +75,7 @@ class Admin_model extends CI_Model{
         ];
         $this->db->where('id', $id);
         $this->db->update(DB_PREFIX.'faculties', $data);
-        $rowsAffected = $this->db->rows_affected();
+        $rowsAffected = $this->db->affected_rows();
 
         if ($rowsAffected > 0){
             return true;
@@ -81,10 +89,21 @@ class Admin_model extends CI_Model{
         return $query->result_array();
     }
 
+    public function getAllFacultiesUsername(){
+        $this->db->select('id, username');
+        $query = $this->db->get(DB_PREFIX.'faculties');
+        return $query->result_array();
+    }
+
+    public function getFaculties(){
+        $query = $this->db->get(DB_PREFIX.'faculties');
+        return $query->result_array();
+    }
+
     public function deleteFaculty($id){
         $this->db->where(['id'=>$id]);
         $this->db->delete(DB_PREFIX.'faculties');
-        $rowsAffected = $this->db->rows_affected();
+        $rowsAffected = $this->db->affected_rows();
 
         if ($rowsAffected > 0){
             return true;
