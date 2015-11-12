@@ -33,4 +33,38 @@ class Faculty_model extends CI_Model{
     	$query = $this->db->get_where(DB_PREFIX.'faculties', ['username'=>$username]);
     	return $query->result_array();
     }
+
+    public function createNotification($username, $title, $message){
+        $data = [
+            'username'=>$username,
+            'title'=>$title,
+            'message'=>$message
+        ];
+
+        $this->db->trans_start(); //transaction start
+        $this->db->insert(DB_PREFIX.'notifications', $data);
+        $id = $this->db->insert_id();
+        $this->db->trans_complete(); // transaction complete
+
+        return $id;
+    }
+
+    public function fileUpload($notification_id, $username, $file_name, $file_url, $file_extension){
+        $data = [
+            'notification_id'=>$notification_id,
+            'username'=>$username,
+            'file_name'=>$file_name,
+            'file_url'=>$file_url,
+            'file_extension'=>$file_extension
+        ];
+
+        $this->db->insert(DB_PREFIX.'attachments', $data);
+
+        if ($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
