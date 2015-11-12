@@ -2,7 +2,7 @@
     <div class="container group">
         <h1>Faculty Console</h1>
         <div class="col span_1_of_2">
-            <form>
+            <?= form_open_multipart('faculty/create'); ?>
                 <p>Title: <textarea id="msg-title" name="msg-title" cols="60" rows="2" placeholder="Tagline for notification"></textarea></p><br>
                 <p><label for="msg-body">Body: </label><textarea id="msg-body" name="msg-body" cols="60" rows="20" placeholder="Type your message here..."></textarea></p>
                 <p>
@@ -11,7 +11,7 @@
                     <p style="color:gray;">Allowed File types: .doc, .docx, .pdf, .jpg, .jpeg and .png</p>
                 </p>
                 <p><input type="submit" value="Send"/></p>
-            </form>
+            <?= form_close(); ?>
         </div>
     </div>
 </div>

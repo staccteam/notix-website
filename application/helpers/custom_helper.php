@@ -68,4 +68,60 @@ function faculty_isLoggedOut(){
 	}
 }
 
+// This function serves the purpose for file upload
+function do_upload_attachment($userfile, $uploadPath, $notification_id){
+	$ci =& get_instance();
+
+	$uploadpath = './attachments/'.$uploadPath;
+	if (!is_dir($uploadpath)) {
+    	mkdir($uploadpath, 0777, TRUE);
+	}
+
+	$config['upload_path'] = $uploadpath;
+	$config['allowed_types'] = 'gif|jpg|png|pdf|docx|ppt|mp4';
+	$config['max_size']	= '2000';
+	$config['max_width']  = '0';
+	$config['max_height']  = '0';
+
+	$ci->load->library('upload', $config);
+
+	if ( ! $ci->upload->do_upload($userfile))
+	{
+		$error = array('error' => $ci->upload->display_errors());
+		$ci->session->set_flashdata('error', $error);
+		return false;
+	}
+	else
+	{
+		$uploadPath = 'attachments/'.$uploadPath;
+		$file = $ci->upload->data();
+		$file_name = $file['file_name'];
+		$file_url = base_url().$uploadPath.$file_name;
+		$file_path = $file['full_path'];
+		$file_extension = $file['file_ext'];
+		$username = $ci->session->userdata('faculty_username');
+
+		$isSuccess = $ci->faculty_model->fileUpload($notification_id, $username, $file_name, $file_url, $file_extension);
+
+		if ($isSuccess){
+			$data = array('upload_data' => $ci->upload->data());
+
+			$ci->session->set_flashdata('success', "The file has been uploaded successfully!");
+			return true;
+		}
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
