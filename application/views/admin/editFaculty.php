@@ -4,20 +4,18 @@
         <?php if (isset($faculty_array[0])): ?>
         <table>
             <tr>
-                <td>First Name</td>
-                <td>Last Name</td>
-                <td>Email</td>
-                <td>Mobile Number</td>
-                <td>Branch</td>
-                <td>Edit</td>
-                <td>Delete</td>
+                <th>Name</th>
+                <th class="hidable">Email</th>
+                <th class="hidable">Mobile Number</th>
+                <th>Branch</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             <?php foreach ($faculty_array as $faculty): ?>
             <tr>
-                <td><?= $faculty['first_name']; ?></td>
-                <td><?= $faculty['last_name']; ?></td>
-                <td><?= $faculty['email']; ?></td>
-                <td><?= $faculty['mobile']; ?></td>
+                <td><?= $faculty['first_name']; ?>&nbsp;<?= $faculty['last_name']; ?></td>
+                <td class="hidable"><?= $faculty['email']; ?></td>
+                <td class="hidable"><?= $faculty['mobile']; ?></td>
                 <td><?= $faculty['branch']; ?></td>
                 <td><a href="#"><i class="fa fa-pencil"></i></a></td>
                 <td><a href="#"><i class="fa fa-trash-o"></i></a></td>

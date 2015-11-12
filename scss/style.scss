@@ -352,14 +352,23 @@ body{
                     color: $accent-color;
                 }
             }
-            tr:nth-child(1){
+            th{
+                padding: 1em;
                 font-weight: bold;
+                color:white;
                 background: $theme-color-light;
-                color: white;
             }
             td {
                 text-align: center;
                 padding: 1em;
+            }
+            @media screen and (max-width: 48em) {
+                .hidable {
+                    display: none;
+                }
+                th, td {
+                    padding: 0.5em;
+                }
             }
         }
     }
