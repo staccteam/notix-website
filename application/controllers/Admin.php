@@ -31,14 +31,24 @@ class Admin extends CI_Controller{
         $this->load->view('templates/_footer');
     }
 
-    public function editFaculty($id){
+    public function editFaculty(){
+        $data['title'] = 'Edit Faculty';
+        $data['faculty_array'] = $this->admin_model->getFaculties();
+        
+        $this->load->view('templates/_header', $data);
+        $this->load->view('templates/_admin_header', $data);
+        $this->load->view('admin/editFaculty');
+        $this->load->view('templates/_footer');
+    }
+
+    public function reviseFaculty($id){
         $data['title'] = 'Edit Faculty';
         // Fetch the faculty details with its id
         $data['faculty'] = $this->admin_model->getFacultyById($id);
         // Pass the faculty data to the view
         $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
-        $this->load->view('admin/edit');
+        $this->load->view('admin/reviseFaculty', $data);
         $this->load->view('templates/_footer');
     }
 

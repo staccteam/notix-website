@@ -12,12 +12,13 @@
                     <input name="password" type="text" placeholder="Password"></input><br><br>
                     Branch:&nbsp;
                     <select name="branch">
-                        <option value="volvo">Mech</option>
-                        <option value="saab">Civil</option>
-                        <option value="mercedes">EC</option>
-                        <option value="audi">CS</option>
-                        <option value="audi">Elex</option>
-                        <option value="audi">IT</option>
+                        <option disabled selected>select</option>
+                        <option>Mech</option>
+                        <option>Civil</option>
+                        <option>EC</option>
+                        <option>CS</option>
+                        <option>Elex</option>
+                        <option>IT</option>
                     </select><br><br>
                     <input type="submit" value="Create"/>
                 <?= form_close(); ?>
@@ -30,7 +31,7 @@
                     Select the username of the faculty to be deleted.
                 </p>
                 <?= form_open('admin/deleteFaculty'); ?>
-                    <?php if (isset($faculties_username[0])): ?>                        
+                    <?php if (isset($faculties_username[0])): ?>
                         <select name="username">
                             <option disabled selected>select...</option>
                             <?php foreach ($faculties_username as $faculty): ?>

@@ -233,7 +233,8 @@ body {
   background-size: cover;
   background-attachment: fixed; }
   .admin-header a {
-    color: white; }
+    color: white;
+    cursor: pointer; }
   .admin-header .container {
     width: 80%;
     margin: 0 auto;
@@ -354,6 +355,26 @@ body {
         font-size: 1.1em;
         padding: 0.5%;
         margin-right: 1%; }
+
+.admin-editFaculty {
+  display: inline-block;
+  width: 100%; }
+  .admin-editFaculty .container {
+    width: 80%;
+    margin: 2em auto; }
+    .admin-editFaculty .container table {
+      width: 100%; }
+      .admin-editFaculty .container table a {
+        color: inherit; }
+        .admin-editFaculty .container table a:hover {
+          color: #FFC107; }
+      .admin-editFaculty .container table tr:nth-child(1) {
+        font-weight: bold;
+        background: #673ab7;
+        color: white; }
+      .admin-editFaculty .container table td {
+        text-align: center;
+        padding: 1em; }
 
 .faculty-home {
   display: inline-block;

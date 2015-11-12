@@ -245,6 +245,7 @@ body{
     background-attachment: fixed;
     a {
         color: white;
+        cursor: pointer; // Firefox fix
     }
     .container {
         width: 80%;
@@ -332,6 +333,33 @@ body{
                     padding: 0.5%;
                     margin-right: 1%;
                 }
+            }
+        }
+    }
+}
+
+.admin-editFaculty {
+    @include flow-fix();
+    .container {
+        width: 80%;
+        margin: 2em auto;
+
+        table {
+            width: 100%;
+            a {
+                color: inherit;
+                &:hover {
+                    color: $accent-color;
+                }
+            }
+            tr:nth-child(1){
+                font-weight: bold;
+                background: $theme-color-light;
+                color: white;
+            }
+            td {
+                text-align: center;
+                padding: 1em;
             }
         }
     }
