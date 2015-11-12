@@ -11,15 +11,14 @@
                     <input name="username" type="text" placeholder="Username"></input>
                     <input name="password" type="text" placeholder="Password"></input><br><br>
                     Branch:&nbsp;
+                    <?php if (isset($branches[0])): ?>
                     <select name="branch">
                         <option disabled selected>select</option>
-                        <option>Mech</option>
-                        <option>Civil</option>
-                        <option>EC</option>
-                        <option>CS</option>
-                        <option>Elex</option>
-                        <option>IT</option>
+                        <?php foreach ($branches as $branch): ?>
+                        <option value="<?= $branch['id']; ?>"><?= $branch['branch']; ?></option>                       
+                        <?php endforeach; ?>
                     </select><br><br>
+                    <?php endif; ?>
                     <input type="submit" value="Create"/>
                 <?= form_close(); ?>
             </div>

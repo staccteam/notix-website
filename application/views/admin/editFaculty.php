@@ -18,9 +18,9 @@
                 <td><?= $faculty['last_name']; ?></td>
                 <td><?= $faculty['email']; ?></td>
                 <td><?= $faculty['mobile']; ?></td>
-                <td><?= $faculty['branch']; ?></td>
-                <td><a href="#"><i class="fa fa-pencil"></i></a></td>
-                <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                <td><?= $faculty['branch_name']; ?></td>
+                <td><a href="<?= base_url(); ?>admin/updateFaculty/<?= $faculty['id']; ?>"><i class="fa fa-pencil"></i></a></td>
+                <td><a href="<?= base_url(); ?>admin/deleteFaculty/<?= $faculty['id']; ?>"><i class="fa fa-trash-o"></i></a></td>
             </tr>
             <?php endforeach; ?>
         </table>

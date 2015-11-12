@@ -15,7 +15,6 @@ class Admin extends CI_Controller{
         $data['title'] = "Home";
         $data['list_faculties'] = $this->admin_model->getFaculties();
 
-        $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/home', $data);
         $this->load->view('templates/_footer');
@@ -24,8 +23,8 @@ class Admin extends CI_Controller{
     public function addFaculty(){
         $data['title'] = "Add Faculty";
         $data['faculties_username'] = $this->admin_model->getAllFacultiesUsername();
+        $data['branches'] = $this->admin_model->getBranches();
 
-        $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/addFaculty', $data);
         $this->load->view('templates/_footer');
@@ -35,9 +34,18 @@ class Admin extends CI_Controller{
         $data['title'] = 'Edit Faculty';
         $data['faculty_array'] = $this->admin_model->getFaculties();
         
-        $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/editFaculty');
+        $this->load->view('templates/_footer');
+    }
+
+    public function updateFaculty($id){
+        $data['title'] = "Update Faculty";
+        $data['faculty'] = $this->admin_model->getFacultyById($id);
+        $data['branches'] = $this->admin_model->getBranches();
+
+        $this->load->view('templates/_admin_header', $data);
+        $this->load->view('admin/updateFaculty', $data);
         $this->load->view('templates/_footer');
     }
 
@@ -46,7 +54,6 @@ class Admin extends CI_Controller{
         // Fetch the faculty details with its id
         $data['faculty'] = $this->admin_model->getFacultyById($id);
         // Pass the faculty data to the view
-        $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/reviseFaculty', $data);
         $this->load->view('templates/_footer');
@@ -84,7 +91,7 @@ class Admin extends CI_Controller{
     public function update(){
         $id = $this->input->post('id');
         $firstName = $this->input->post('first_name');
-        $last_name = $this->input->post('last_name');
+        $lastName = $this->input->post('last_name');
         $email = $this->input->post('email');
         $mobile = $this->input->post('mobile');
         $username = $this->input->post('username');
@@ -92,7 +99,7 @@ class Admin extends CI_Controller{
         $branch = $this->input->post('branch');
         $status = true;
 
-        $isSuccessful = $this->admin_model->updateFaculty($id, $firstName, $lastName, $email. $mobile, $username, $password, $branch, $status);
+        $isSuccessful = $this->admin_model->updateFaculty($id, $firstName, $lastName, $email, $mobile, $username, $password, $branch, $status);
 
         if ($isSuccessful){
             if ($this->input->is_ajax_request()){
@@ -106,14 +113,20 @@ class Admin extends CI_Controller{
         }
     }
     
-    public function deleteFaculty(){
-        $id = $this->input->post('username');
-        $isDeleted = $this->admin_model->deleteFaculty($id);
-        if ($isDeleted){
-            redirect('admin/home');
+    public function deleteFaculty($id=NULL){
+        if ($id==NULL){
+            $id = $this->input->post('username');
+            $isDeleted = $this->admin_model->deleteFaculty($id);
+            if ($isDeleted){
+                redirect('admin/home');
+            }else{
+                $this->session->set_flashdata('error', 'Entry in the database could not be deleted');
+                redirect('admin/home');
+            }
         }else{
-            $this->session->set_flashdata('error', 'Entry in the database could not be deleted');
+            $this->admin_model->deleteFaculty($id);
             redirect('admin/home');
         }
+        
     }
 }

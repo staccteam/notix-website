@@ -62,17 +62,31 @@ class Admin_model extends CI_Model{
         }
     }
 
-    public function updateFaculty($id, $firstName, $lastName, $email, $mobile, $username, $password, $branch, $status){
-        $data = [
-            'first_name' => $firstName,
-            'last_name' => $lastName,
-            'email' => $email,
-            'mobile' => $mobile,
-            'username' => $username,
-            'password' => $password,
-            'branch' => $branch,
-            'status' => $status
-        ];
+    public function updateFaculty($id, $firstName, $lastName, $email, $mobile, $username, $password=NULL, $branch, $status){
+        if ($password == NULL){
+            $data = [
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'email' => $email,
+                'mobile' => $mobile,
+                'username' => $username,
+                'branch' => $branch,
+                'status' => $status
+            ];
+        }else{
+            $password = hash_password($password);
+            $data = [
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'email' => $email,
+                'mobile' => $mobile,
+                'username' => $username,
+                'password' => $password,
+                'branch' => $branch,
+                'status' => $status
+            ];
+        }
+        
         $this->db->where('id', $id);
         $this->db->update(DB_PREFIX.'faculties', $data);
         $rowsAffected = $this->db->affected_rows();
@@ -96,7 +110,10 @@ class Admin_model extends CI_Model{
     }
 
     public function getFaculties(){
-        $query = $this->db->get(DB_PREFIX.'faculties');
+        $sql = 'select `'.DB_PREFIX.'faculties`.*, `'.DB_PREFIX.'branches`.branch as branch_name from `'.DB_PREFIX.'faculties`
+                    left join `'.DB_PREFIX.'branches`
+                    on `'.DB_PREFIX.'faculties`.branch = `'.DB_PREFIX.'branches`.id;';
+        $query = $this->db->query($sql);
         return $query->result_array();
     }
 
@@ -110,6 +127,11 @@ class Admin_model extends CI_Model{
         }else{
             return false;
         }
+    }
+
+    public function getBranches(){
+        $query = $this->db->get(DB_PREFIX.'branches');
+        return $query->result_array();
     }
 
 

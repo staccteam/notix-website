@@ -68,4 +68,9 @@ class Student_model extends CI_Model{
     		return false;
     	}
     }
+
+    public function getBranches(){
+        $query = $this->db->get(DB_PREFIX.'branches');
+        return $query->result_array();
+    }
 }
