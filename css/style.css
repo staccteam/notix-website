@@ -368,13 +368,19 @@ body {
         color: inherit; }
         .admin-editFaculty .container table a:hover {
           color: #FFC107; }
-      .admin-editFaculty .container table tr:nth-child(1) {
+      .admin-editFaculty .container table th {
+        padding: 1em;
         font-weight: bold;
-        background: #673ab7;
-        color: white; }
+        color: white;
+        background: #673ab7; }
       .admin-editFaculty .container table td {
         text-align: center;
         padding: 1em; }
+      @media screen and (max-width: 48em) {
+        .admin-editFaculty .container table .hidable {
+          display: none; }
+        .admin-editFaculty .container table th, .admin-editFaculty .container table td {
+          padding: 0.5em; } }
 
 .faculty-home {
   display: inline-block;
