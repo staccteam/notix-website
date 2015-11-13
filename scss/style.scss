@@ -285,7 +285,6 @@ body{
             }
         }
     }
-
 }
 
 .admin {
@@ -374,7 +373,89 @@ body{
     }
 }
 
+.faculty-header {
+    position: relative;
+    line-height: 120%;
+    width: 100%;
+    height: 5em;
+    font-size: 3em;
+    color: white;
+    background: url('../img/faculty-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    a {
+        color: white;
+        cursor: pointer; // Firefox fix
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        @include vh-center();
+
+        .page-title{
+            font-size: 0.6em;
+        }
+
+        .navlinks {
+            @include v-center(absolute);
+            right: 0;
+
+            li {
+                float: left;
+                margin-left: 2em;
+            }
+            button.ghost {
+                font-family: $oxygen;
+                background-color: transparent;
+                font-size: 0.5em;
+                border: 2px solid black;
+                color: black;
+                padding: 0em;
+                box-sizing: border-box;
+                width: 100px;
+                height: 50px;
+                text-align: center;
+                border-radius: 3px;
+                transition: all 0.35s ease-in-out;
+                &:hover {
+                    background-color: rgba(61,34,109,0.6);
+                    color: #fff;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+}
+
 .faculty-home {
+    @include flow-fix();
+    .container{
+        width: 80%;
+        margin: 2em auto;
+        .tile-grid {
+            .tile-item {
+                background: $theme-color-light;
+                height: 250px;
+                width: 250px;
+                position: relative;
+                color: white;
+                font-size: 2em;
+                p {
+                    @include vh-center(absolute);
+                }
+                &:hover{
+                    cursor: pointer;
+                    background: rgba(103, 58, 183, 0.8);
+                }
+            }
+        }
+    }
+}
+
+.faculty-createNotification {
     @include flow-fix();
     .container{
         width: 80%;
@@ -397,5 +478,13 @@ body{
                 vertical-align: top;
             }
         }
+    }
+}
+
+.faculty-deleteNotifications {
+    @include flow-fix();
+    .container{
+        width: 80%;
+        margin: 2em auto;
     }
 }

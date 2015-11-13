@@ -382,24 +382,114 @@ body {
         .admin-editFaculty .container table th, .admin-editFaculty .container table td {
           padding: 0.5em; } }
 
+.faculty-header {
+  position: relative;
+  line-height: 120%;
+  width: 100%;
+  height: 5em;
+  font-size: 3em;
+  color: white;
+  background: url("../img/faculty-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; }
+  .faculty-header a {
+    color: white;
+    cursor: pointer; }
+  .faculty-header .container {
+    width: 80%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); }
+    .faculty-header .container .page-title {
+      font-size: 0.6em; }
+    .faculty-header .container .navlinks {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      right: 0; }
+      .faculty-header .container .navlinks li {
+        float: left;
+        margin-left: 2em; }
+      .faculty-header .container .navlinks button.ghost {
+        font-family: "Oxygen", sans-serif;
+        background-color: transparent;
+        font-size: 0.5em;
+        border: 2px solid black;
+        color: black;
+        padding: 0em;
+        box-sizing: border-box;
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        border-radius: 3px;
+        transition: all 0.35s ease-in-out; }
+        .faculty-header .container .navlinks button.ghost:hover {
+          background-color: rgba(61, 34, 109, 0.6);
+          color: #fff;
+          cursor: pointer; }
+
 .faculty-home {
   display: inline-block;
   width: 100%; }
   .faculty-home .container {
     width: 80%;
     margin: 2em auto; }
-    .faculty-home .container form {
+    .faculty-home .container .tile-grid .tile-item {
+      background: #673ab7;
+      height: 250px;
+      width: 250px;
+      position: relative;
+      color: white;
+      font-size: 2em; }
+      .faculty-home .container .tile-grid .tile-item p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%); }
+      .faculty-home .container .tile-grid .tile-item:hover {
+        cursor: pointer;
+        background: rgba(103, 58, 183, 0.8); }
+
+.faculty-createNotification {
+  display: inline-block;
+  width: 100%; }
+  .faculty-createNotification .container {
+    width: 80%;
+    margin: 2em auto; }
+    .faculty-createNotification .container form {
       margin: 1em 0; }
-      .faculty-home .container form input {
+      .faculty-createNotification .container form input {
         font-family: "Oxygen", sans-serif;
         font-size: 1.1em;
         padding: 1.2%; }
-        .faculty-home .container form input[type="submit"] {
+        .faculty-createNotification .container form input[type="submit"] {
           margin: 2% 0; }
-      .faculty-home .container form textarea {
+      .faculty-createNotification .container form textarea {
         font-family: "Oxygen", sans-serif;
         font-size: 1.1em;
         padding: 1.2%;
         vertical-align: top; }
+
+.faculty-deleteNotifications {
+  display: inline-block;
+  width: 100%; }
+  .faculty-deleteNotifications .container {
+    width: 80%;
+    margin: 2em auto; }
 
 /*# sourceMappingURL=style.css.map */
