@@ -1,8 +1,7 @@
 <div class="admin-addfaculty">
-    <div class="container group">
+    <div class="container">
         <section>
-            <div class="col span_2_of_4">
-                <h2>Create Faculty</h2>
+            <div>
                 <?= form_open('admin/create') ?>
                     <input name="first_name" type="text" placeholder="First Name"></input>
                     <input name="last_name" type="text" placeholder="Last Name"></input><br><br>
@@ -20,29 +19,6 @@
                     </select><br><br>
                     <?php endif; ?>
                     <input type="submit" value="Create"/>
-                <?= form_close(); ?>
-            </div>
-        </section>
-        <section>
-            <div class="col span_2_of_4">
-                <h2>Delete Faculty</h2>
-                <p style="margin: 1% 0; color: gray;">
-                    Select the username of the faculty to be deleted.
-                </p>
-                <?= form_open('admin/deleteFaculty'); ?>
-                    <?php if (isset($faculties_username[0])): ?>
-                        <select name="username">
-                            <option disabled selected>select...</option>
-                            <?php foreach ($faculties_username as $faculty): ?>
-                                <option value="<?= $faculty['id']; ?>"><?= $faculty['username']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <input type="submit" value="Delete"/>
-                    <?php else: ?>
-                        <p style="margin: 1% 0; color: gray;">
-                            There are no faculties entry in the database. Create a Faculty First.
-                        </p>
-                    <?php endif; ?>
                 <?= form_close(); ?>
             </div>
         </section>

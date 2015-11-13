@@ -15,6 +15,7 @@ class Admin extends CI_Controller{
         $data['title'] = "Home";
         $data['list_faculties'] = $this->admin_model->getFaculties();
 
+        $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/home', $data);
         $this->load->view('templates/_footer');
@@ -25,6 +26,7 @@ class Admin extends CI_Controller{
         $data['faculties_username'] = $this->admin_model->getAllFacultiesUsername();
         $data['branches'] = $this->admin_model->getBranches();
 
+        $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/addFaculty', $data);
         $this->load->view('templates/_footer');
@@ -34,6 +36,7 @@ class Admin extends CI_Controller{
         $data['title'] = 'Edit Faculty';
         $data['faculty_array'] = $this->admin_model->getFaculties();
         
+        $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/editFaculty');
         $this->load->view('templates/_footer');
@@ -44,6 +47,7 @@ class Admin extends CI_Controller{
         $data['faculty'] = $this->admin_model->getFacultyById($id);
         $data['branches'] = $this->admin_model->getBranches();
 
+        $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/updateFaculty', $data);
         $this->load->view('templates/_footer');
@@ -54,6 +58,7 @@ class Admin extends CI_Controller{
         // Fetch the faculty details with its id
         $data['faculty'] = $this->admin_model->getFacultyById($id);
         // Pass the faculty data to the view
+        $this->load->view('templates/_header', $data);
         $this->load->view('templates/_admin_header', $data);
         $this->load->view('admin/reviseFaculty', $data);
         $this->load->view('templates/_footer');
