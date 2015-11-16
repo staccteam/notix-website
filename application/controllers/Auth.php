@@ -104,7 +104,9 @@ class Auth extends CI_Controller{
 		$isValid = $this->faculty_model->login($username, $password);
 		// var_dump($isValid);
 		if ($isValid){
+			$faculty = $this->faculty_model->getFacultyByUsername($username);
 			$this->session->set_userdata('faculty_username', $username);
+			$this->session->set_userdata('faculty_id', $faculty[0]['id']);
 			redirect('faculty/home');
 		}else{
 			die();

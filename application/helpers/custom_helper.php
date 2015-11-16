@@ -113,7 +113,50 @@ function do_upload_attachment($userfile, $uploadPath, $notification_id){
 	}
 }
 
+function do_upload_images($userInputName, $uploadPath){
+	$ci =& get_instance();
 
+	$uploadpath = './images/'.$uploadPath;
+	if (!is_dir($uploadpath)) {
+    	mkdir($uploadpath, 0777, TRUE);
+	}
+
+	$config['upload_path'] = $uploadpath;
+	$config['allowed_types'] = 'gif|jpg|png';
+	$config['max_size']	= '2000';
+	$config['max_width']  = '0';
+	$config['max_height']  = '0';
+
+	$ci->load->library('upload', $config);
+
+	if ( ! $ci->upload->do_upload($userfile))
+	{
+		$error = array('error' => $ci->upload->display_errors());
+		$ci->session->set_flashdata('error', $error);
+		return false;
+	}
+	else
+	{
+		$uploadPath = 'attachments/'.$uploadPath;
+		$image = $ci->upload->data();
+		$image_name = $image['file_name'];
+		$image_url = base_url().$uploadPath.$image_name;
+		$image_path = $image['full_path'];
+		$image_extension = $image['file_ext'];
+		$username = $ci->session->userdata('faculty_username');
+		$faculty_id = $ci->session->userdata('faculty_id');
+
+		$isSuccess = $ci->faculty_model->facultyProfilePictureUpload($faculty_id, $username, $image_name, $image_url, $image_extension);
+
+		if ($isSuccess){
+			$data = array('upload_data' => $ci->upload->data());
+
+			$ci->session->set_flashdata('success', "The file has been uploaded successfully!");
+			return true;
+		}
+		
+	}
+}
 
 
 

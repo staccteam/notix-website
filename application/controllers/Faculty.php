@@ -19,6 +19,34 @@ class Faculty extends CI_Controller{
         $this->load->view('templates/_footer');
     }
 
+    public function profile($username){
+        $data['title'] = $username;
+        $data['profile'] = $this->faculty_model->getFacultyProfileByUsername($username);
+
+        $this->load->view('templates/_header', $data);
+        $this->load->view('templates/_faculty_header', $data);
+        $this->load->view('faculty/profile', $data);
+        $this->load->view('templates/_footer');
+    }
+
+    public function updateProfileInfo(){
+        $email = $this->input->post('email');
+        $mobile = $this->input->post('mobile');
+        $password = $this->input->post('password');
+        $about = $this->input->post('about');
+
+        if (empty($about))
+            $about == NULL;
+
+        if (empty($password))
+            $password = NULL;
+        else
+            $password = hash_password($password);
+
+        if ($password == NULL)
+            $this->faculty_model->insertFacultyProfile($this->session->userdata('faculty_id'), $this->session->userdata('facutly_username'), $email, $mobile, $password, $about);
+    }
+
     public function createNotification(){
         $data['title'] = 'Create Notification';
 
@@ -37,11 +65,6 @@ class Faculty extends CI_Controller{
         $this->load->view('templates/_footer');
     }
 
-    public function logout(){
-        $this->session->unset_userdata('faculty_username');
-        redirect('/');
-    }
-
     // This function creates a notification and saves it in the database.
     public function create(){
         $title = $this->input->post('msg-title');
@@ -57,6 +80,20 @@ class Faculty extends CI_Controller{
         }
         
         redirect('faculty/home');
+    }
+
+    public function uploadProfilePicture(){
+        $userInputName = 'profile_picture';
+
+        $uploadPath = 'faculty/'.$this->session->userdata('faculty_username').'/';
+        do_upload_images($userInputName, $uploadPath);
+
+        redirect('faculty/profile/'.$this->session->userdata('faculty_username'));
+    }
+
+    public function logout(){
+        $this->session->unset_userdata('faculty_username');
+        redirect('/');
     }
     
 }

@@ -67,4 +67,84 @@ class Faculty_model extends CI_Model{
         }
     }
 
+    public function getFacultyProfileByUsername($username){
+        $sql = 'SELECT notix_faculties.first_name, notix_faculties.last_name, notix_faculties.email, notix_faculties.mobile, notix_faculty_profiles.about, notix_faculty_profile_pictures.image_url,
+                    notix_branches.branch
+                    FROM notix_faculties
+                    LEFT JOIN notix_faculty_profiles
+                    ON notix_faculty_profiles.username = notix_faculty_profiles.username
+                    LEFT JOIN notix_faculty_profile_pictures
+                    ON notix_faculty_profiles.username = notix_faculty_profile_pictures.username
+                    LEFT JOIN notix_branches
+                    ON notix_branches.id = notix_faculties.branch
+                    WHERE notix_faculties.username = ?;';
+        $query = $this->db->query($sql, [$username]);
+        return $query->result_array();
+    }
+
+    public function facultyProfilePictureUpload($faculty_id, $username, $image_name, $image_url, $image_extension){
+        $data = [
+            'faculty_id'=>$faculty_id,
+            'username'=>$username,
+            'image_name'=>$image_name,
+            'image_url'=>$image_url,
+            'image_extension'=>$image_extension
+        ];
+        $query = $this->db->get_where(DB_PREFIX.'faculty_profile_pictures', ['username'=>$username]); //fetch the user's current profile picture
+        $result = $query->result_array(); 
+        // check if the profile picture already exists
+        if (count($result) > 0){
+            $this->db->where('username', $username);
+            $this->db->update(DB_PREFIX.'faculty_profile_pictures');
+        }else{
+            $this->db->insert(DB_PREFIX.'faculty_profile_pictures', $data);
+        }
+        
+        if ($this->db->affected_rows()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function updateFacultyProfile($faculty_id, $username, $email, $mobile, $password, $about){
+        if ($about !== NULL){
+           $data = [
+                'faculty_id'=>$faculty_id,
+                'username'=>$username,
+                'about'=>$about
+            ];
+
+            $this->db->insert(DB_PREFIX.'faculty_profiles', $data); 
+        }
+        
+        $this->updateFaculty($username, $email, $mobile, $password);
+
+        if ($this->db->affected_rows()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private function updateFaculty($username, $email, $mobile, $password){
+        $data = NULL;
+
+        if ($password == NULL){
+            $data = [
+                'email'=>$email,
+                'mobile'=>$mobile,
+            ];
+        }else{
+            $data = [
+                'email'=>$email,
+                'mobile'=>$mobile,
+                'password'=>$password
+            ];
+        }
+
+        $this->db->where('username', $username);
+        $this->db->update(DB_PREFIX.'faculties', $data);
+    }
+
 }
