@@ -12,10 +12,11 @@ class Faculty extends CI_Controller{
 
     public function home(){
         $data['title'] = 'Home';
+        $data['faculty'] = $this->faculty_model->getFacultyByUsername($this->session->userdata('faculty_username'));
 
         $this->load->view('templates/_header', $data);
         $this->load->view('templates/_faculty_header', $data);
-        $this->load->view('faculty/home');
+        $this->load->view('faculty/home', $data);
         $this->load->view('templates/_footer');
     }
 
