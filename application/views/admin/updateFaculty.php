@@ -1,4 +1,4 @@
-<div class="admin-addfaculty">
+<div class="admin-updateFaculty">
     <div class="container group">
         <section>
             <div class="col span_2_of_4">

@@ -1,4 +1,4 @@
-<div class="admin-addfaculty">
+<div class="admin-addFaculty">
     <div class="container">
         <section>
             <div>

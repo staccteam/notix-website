@@ -317,7 +317,7 @@ body{
     }
 }
 
-.admin-addfaculty {
+.admin-addFaculty {
     @include flow-fix();
     .container {
         width: 80%;
@@ -371,6 +371,10 @@ body{
             }
         }
     }
+}
+
+.admin-updateFaculty {
+    @extend .admin-addFaculty;
 }
 
 .faculty-header {
@@ -486,5 +490,17 @@ body{
     .container{
         width: 80%;
         margin: 2em auto;
+    }
+}
+
+.faculty-profile {
+    @include flow-fix();
+    .container{
+        width: 80%;
+        margin: 2em auto;
+
+        .profile-pic-form {
+
+        }
     }
 }

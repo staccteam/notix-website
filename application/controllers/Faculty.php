@@ -21,8 +21,8 @@ class Faculty extends CI_Controller{
     }
 
     public function profile($username){
-        $data['title'] = $username;
-        $data['profile'] = $this->faculty_model->getFacultyProfileByUsername($username);
+        $data['title'] = "Edit Profile";
+        $data['faculty'] = $this->faculty_model->getFacultyProfileByUsername($username);
 
         $this->load->view('templates/_header', $data);
         $this->load->view('templates/_faculty_header', $data);

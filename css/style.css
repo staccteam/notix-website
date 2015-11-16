@@ -342,15 +342,15 @@ body {
         cursor: pointer;
         background: rgba(103, 58, 183, 0.8); }
 
-.admin-addfaculty {
+.admin-addFaculty, .admin-updateFaculty {
   display: inline-block;
   width: 100%; }
-  .admin-addfaculty .container {
+  .admin-addFaculty .container, .admin-updateFaculty .container {
     width: 80%;
     margin: 2em auto; }
-    .admin-addfaculty .container section form {
+    .admin-addFaculty .container section form, .admin-updateFaculty .container section form {
       margin: 1em 0; }
-      .admin-addfaculty .container section form input {
+      .admin-addFaculty .container section form input, .admin-updateFaculty .container section form input {
         font-family: "Oxygen", sans-serif;
         font-size: 1.1em;
         padding: 0.5%;
@@ -489,6 +489,13 @@ body {
   display: inline-block;
   width: 100%; }
   .faculty-deleteNotifications .container {
+    width: 80%;
+    margin: 2em auto; }
+
+.faculty-profile {
+  display: inline-block;
+  width: 100%; }
+  .faculty-profile .container {
     width: 80%;
     margin: 2em auto; }
 

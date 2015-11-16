@@ -157,14 +157,4 @@ function do_upload_images($userInputName, $uploadPath){
 		
 	}
 }
-
-
-
-
-
-
-
-
-
-
 ?>
