@@ -147,4 +147,13 @@ class Faculty_model extends CI_Model{
         $this->db->update(DB_PREFIX.'faculties', $data);
     }
 
+    public function getNotifications(){
+        $sql = 'SELECT `notix_notifications`.*, `notix_attachments`.file_name, `notix_attachments`.file_url 
+                FROM `notix_notifications` 
+                LEFT JOIN `notix_attachments` 
+                ON `notix_notifications`.id = `notix_attachments`.notification_id;';
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
 }

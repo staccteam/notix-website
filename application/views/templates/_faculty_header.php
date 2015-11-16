@@ -2,7 +2,7 @@
     <div class="container">
         <span class="section-title">
             <p><a onclick="window.location='<?= base_url(); ?>faculty/home'"><i class="fa fa-tasks"></i>&nbsp;Faculty Console</a></p>
-            <p class="page-title">Prof. <?php echo $faculty[0]['first_name'] . " " . $faculty[0]['last_name'] ?></p>
+            <p class="page-title">Prof. <?php echo $this->session->userdata('faculty_first_name').' '.$this->session->userdata('faculty_last_name'); ?></p>
         </span>
         <span class="navlinks">
             <ul>

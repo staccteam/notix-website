@@ -59,10 +59,11 @@ class Faculty extends CI_Controller{
 
     public function deleteNotifications(){
         $data['title'] = 'Delete Notifications';
+        $data['notifications'] = $this->faculty_model->getNotifications();
 
         $this->load->view('templates/_header', $data);
         $this->load->view('templates/_faculty_header', $data);
-        $this->load->view('faculty/deleteNotifications');
+        $this->load->view('faculty/deleteNotifications', $data);
         $this->load->view('templates/_footer');
     }
 
@@ -84,10 +85,20 @@ class Faculty extends CI_Controller{
     }
 
     public function uploadProfilePicture(){
-        $userInputName = 'profile_picture';
+        $userInputName = 'profile-picture';
 
-        $uploadPath = 'faculty/'.$this->session->userdata('faculty_username').'/';
-        do_upload_images($userInputName, $uploadPath);
+        $pre = 'images/'; // name of the main folder
+        $uploadPath = 'faculty/'.$this->session->userdata('faculty_username').'/'; // upload path inside the main folder
+        $image = do_upload_images($userInputName, $uploadPath); 
+        $image_url = base_url().$pre.$uploadPath.$image['file_name']; // full image url
+
+        if (isset($image)){
+            $this->faculty_model->facultyProfilePictureUpload($this->session->userdata('faculty_id'), 
+                $this->session->userdata('faculty_username'),
+                 $image['file_name'], $image_url, 
+                  $image['file_ext']);
+        }
+        
 
         redirect('faculty/profile/'.$this->session->userdata('faculty_username'));
     }
