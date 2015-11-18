@@ -356,30 +356,30 @@ body {
         padding: 0.5%;
         margin-right: 1%; }
 
-.admin-editFaculty {
+.admin-editFaculty, .faculty-deleteNotifications {
   display: inline-block;
   width: 100%; }
-  .admin-editFaculty .container {
+  .admin-editFaculty .container, .faculty-deleteNotifications .container {
     width: 80%;
     margin: 2em auto; }
-    .admin-editFaculty .container table {
+    .admin-editFaculty .container table, .faculty-deleteNotifications .container table {
       width: 100%; }
-      .admin-editFaculty .container table a {
+      .admin-editFaculty .container table a, .faculty-deleteNotifications .container table a {
         color: inherit; }
-        .admin-editFaculty .container table a:hover {
+        .admin-editFaculty .container table a:hover, .faculty-deleteNotifications .container table a:hover {
           color: #FFC107; }
-      .admin-editFaculty .container table th {
+      .admin-editFaculty .container table th, .faculty-deleteNotifications .container table th {
         padding: 1em;
         font-weight: bold;
         color: white;
         background: #673ab7; }
-      .admin-editFaculty .container table td {
+      .admin-editFaculty .container table td, .faculty-deleteNotifications .container table td {
         text-align: center;
         padding: 1em; }
       @media screen and (max-width: 48em) {
-        .admin-editFaculty .container table .hidable {
+        .admin-editFaculty .container table .hidable, .faculty-deleteNotifications .container table .hidable {
           display: none; }
-        .admin-editFaculty .container table th, .admin-editFaculty .container table td {
+        .admin-editFaculty .container table th, .faculty-deleteNotifications .container table th, .admin-editFaculty .container table td, .faculty-deleteNotifications .container table td {
           padding: 0.5em; } }
 
 .faculty-header {
@@ -484,13 +484,6 @@ body {
         font-size: 1.1em;
         padding: 1.2%;
         vertical-align: top; }
-
-.faculty-deleteNotifications {
-  display: inline-block;
-  width: 100%; }
-  .faculty-deleteNotifications .container {
-    width: 80%;
-    margin: 2em auto; }
 
 .faculty-profile {
   display: inline-block;

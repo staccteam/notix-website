@@ -486,11 +486,7 @@ body{
 }
 
 .faculty-deleteNotifications {
-    @include flow-fix();
-    .container{
-        width: 80%;
-        margin: 2em auto;
-    }
+    @extend .admin-editFaculty;
 }
 
 .faculty-profile {
@@ -498,9 +494,5 @@ body{
     .container{
         width: 80%;
         margin: 2em auto;
-
-        .profile-pic-form {
-
-        }
     }
 }
