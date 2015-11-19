@@ -487,6 +487,7 @@ body{
 
 .faculty-deleteNotifications {
     @extend .admin-editFaculty;
+    @import '_modal_component.scss';
 }
 
 .faculty-profile {

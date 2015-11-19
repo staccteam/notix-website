@@ -1,3 +1,14 @@
+    <script src="<?= base_url(); ?>js/jquery.js"></script>
+    <script src="<?= base_url(); ?>js/main.js"></script>
+    <script src="<?= base_url(); ?>js/modernizr.custom.js"></script>
+    <script src="<?= base_url(); ?>js/classie.js"></script>
+    <script src="<?= base_url(); ?>js/modalEffects.js"></script>
+    <script>
+        // this is important for IEs
+        var polyfilter_scriptpath = '/js/';
+    </script>
+    <script src="<?= base_url(); ?>js/cssParser.js"></script>
+    <script src="<?= base_url(); ?>js/css-filters-polyfill.js"></script>
     <div class="footer">
         <div class="container">
             <div>

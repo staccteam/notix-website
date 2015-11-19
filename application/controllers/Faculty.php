@@ -103,6 +103,12 @@ class Faculty extends CI_Controller{
         redirect('faculty/profile/'.$this->session->userdata('faculty_username'));
     }
 
+    public function getNotificationById($id){
+       $notification = $this->faculty_model->getNotificationById($id);
+
+       $this->output->set_output(json_encode($notification));
+    }
+
     public function logout(){
         $this->session->unset_userdata('faculty_username');
         redirect('/');

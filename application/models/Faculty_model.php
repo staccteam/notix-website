@@ -156,4 +156,9 @@ class Faculty_model extends CI_Model{
         return $query->result_array();
     }
 
+    public function getNotificationById($id){
+        $query = $this->db->get_where(DB_PREFIX.'notifications', ['id'=>$id]);
+        return $query->result_array();
+    }
+
 }
