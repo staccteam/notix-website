@@ -95,7 +95,7 @@ class Faculty_model extends CI_Model{
         // check if the profile picture already exists
         if (count($result) > 0){
             $this->db->where('username', $username);
-            $this->db->update(DB_PREFIX.'faculty_profile_pictures');
+            $this->db->update(DB_PREFIX.'faculty_profile_pictures', $data);
         }else{
             $this->db->insert(DB_PREFIX.'faculty_profile_pictures', $data);
         }
