@@ -17,7 +17,7 @@
         </section>
         <section class="col span_1_of_4 profile-form">
             <ul>
-                <?php foreach ($faculty[0] as $fd): ?>
+                <?php foreach ($faculty as $fd): ?>
                     <li>First Name: <?php echo $fd['first_name']; ?></li><br>
                 <?php endforeach; ?>
             </ul>

@@ -74,7 +74,7 @@ class Faculty_model extends CI_Model{
                     LEFT JOIN notix_faculty_profiles
                     ON notix_faculty_profiles.username = notix_faculty_profiles.username
                     LEFT JOIN notix_faculty_profile_pictures
-                    ON notix_faculty_profiles.username = notix_faculty_profile_pictures.username
+                    ON notix_faculties.username = notix_faculty_profile_pictures.username
                     LEFT JOIN notix_branches
                     ON notix_branches.id = notix_faculties.branch
                     WHERE notix_faculties.username = ?;';
