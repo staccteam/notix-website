@@ -57,13 +57,13 @@ class Faculty extends CI_Controller{
         $this->load->view('templates/_footer');
     }
 
-    public function deleteNotifications(){
+    public function notifications(){
         $data['title'] = 'Delete Notifications';
         $data['notifications'] = $this->faculty_model->getNotifications();
 
         $this->load->view('templates/_header', $data);
         $this->load->view('templates/_faculty_header', $data);
-        $this->load->view('faculty/deleteNotifications', $data);
+        $this->load->view('faculty/notifications', $data);
         $this->load->view('templates/_footer');
     }
 
