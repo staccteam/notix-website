@@ -15,6 +15,6 @@
 
 <br>
 **Project by**  
-Flying Dogs  
+Stacc (P) Ltd.  
 Jabalpur, IN  
-[flyingdogs[at]live.in](mailto:flyingdogs@live.in)
+[contact[at]stacc.co](mailto:contact@stacc.co)
