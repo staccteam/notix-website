@@ -9,7 +9,7 @@
 
 #### Links:
 * [HCET Website](http://hcet.hitkarini.com/)
-* [Flying Dogs Facebook Page](http://facebook.com/FlyingDogsIndia)
+* [Stacc Facebook Page](http://facebook.com/staccteam)
 * [Sass Basics](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
 * [PHP MVC Basics](http://www.sitepoint.com/the-mvc-pattern-and-php-1)
 
