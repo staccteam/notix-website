@@ -1,4 +1,5 @@
 application/config/config.php
 .sass-cache/
+node_modules/
 attachments/
 images/

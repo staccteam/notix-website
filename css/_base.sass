@@ -1,0 +1,78 @@
+body
+    font-family: $oxygen
+    background-color: $bg-color
+    color: black
+
+    a
+        text-decoration: none
+        font-weight: bold
+
+        // color: white;
+        &:hover
+            color: $accent-color
+
+    &:hover
+        cursor: default
+
+    h1
+        font-family: $merriweather
+        font-size: 2em
+        font-weight: bold
+
+    h2
+        font-family: $merriweather
+        font-size: 1.5em
+
+.header
+    position: relative
+    width: 100%
+    height: 5.5em
+    background-color: $theme-color-light
+    color: white
+
+    a
+        color: white
+
+    .container
+        width: 80%
+        height: 100%
+        margin: 0 auto
+
+        +vh-center
+
+        .site-title
+            font-family: $oxygen
+            font-weight: bold
+            font-size: 1.2em
+            display: inline-block
+
+            +v-center(absolute)
+
+            .notix-logo
+                height: 1.8em
+                vertical-align: middle
+
+            &:hover
+                cursor: pointer
+
+        .navlinks
+            +v-center(absolute)
+
+            right: 0
+
+            li
+                float: left
+                margin-left: 2em
+
+.footer
+    position: relative
+    width: 100%
+    background-color: $theme-color-dark
+
+    a
+        color: white
+
+    .container
+        color: white
+        padding: 2% 0
+        text-align: center

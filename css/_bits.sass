@@ -1,0 +1,103 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,300,700|Oxygen:400,300,700)
+
+$merriweather: "Merriweather", serif
+$oxygen: "Oxygen", sans-serif
+$bg-color: #efebf7
+$theme-color-light: #673ab7
+$theme-color-dark: #3d226d
+$accent-color: #ffc107
+
+// RESPONSIVE BREAKPOINTS
+$break-laptop: 1366px
+$break-large: 1200px
+$break-small: 900px
+$skeleton-bp: 768px
+$break-650: 650px
+$break-520: 520px
+$break-470: 470px
+$break-420: 420px
+
+=pmr()
+    padding: 0
+    margin: 0
+
+=word-wrap()
+    overflow-wrap: break-word
+    word-wrap: break-word
+    -ms-word-break: break-all
+    word-break: break-word
+    -ms-hyphens: auto
+    -moz-hyphens: auto
+    -webkit-hyphens: auto
+    hyphens: auto
+
+=bp($bpx)
+    @media screen and (max-width: $bpx)
+        @content
+
+=vh-center($position: absolute)
+    position: $position
+    top: 50%
+    left: 50%
+    margin-right: -50%
+    transform: translate(-50%, -50%)
+
+=v-center($position: relative)
+    position: $position
+    top: 50%
+    transform: translateY(-50%)
+
+=h-center($position: absolute)
+    position: $position
+    left: 50%
+    transform: translateX(-50%)
+
+=db($color: red, $style: solid)
+    // db: debug border
+    // border for block debugging and CSS block model
+    border: 2px $style $color
+
+=login-mixin
+    .container
+        padding: 0
+        width: 80%
+        margin: 0 auto
+        clear: both
+
+        .login-form
+            p
+                font-family: $merriweather
+                font-weight: bold
+                font-size: 2em
+                color: $theme-color-dark
+
+            form
+                margin: 1.2em 0 0 0
+                padding: 0
+
+                div
+                    width: 100%
+                    text-align: center
+
+                input
+                    margin: 1.2em 0 0 0
+                    font-family: $oxygen
+                    font-size: 1.2em
+                    font-weight: lighter
+
+                .form-fields
+                    padding: 0.5em
+                    width: 100%
+                    box-sizing: border-box
+
+                .login-btn
+                    background-color: $theme-color-dark
+                    color: white
+                    border: none
+                    padding: 1em 0
+                    margin: 1.5em 0 0 0
+                    width: 100%
+
+                    &:hover
+                        background-color: rgba(61, 34, 109, 0.8)
+                        cursor: pointer

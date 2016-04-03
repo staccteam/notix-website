@@ -1,0 +1,46 @@
+$bg-color: #22a7f0
+$primary-color: white
+
+$form-control-width: 100%
+$form-control-height: auto
+$form-control-border-color: #22a7ff
+$form-control-border-width: 2px
+$form-control-border-radius: 2px
+$form-control-btn-bg-color: #22a7ff
+$form-control-btn-color: white
+
+$textarea-height: 6em
+$textarea-width: 100%
+
+
+body
+  background-color: $bg-color
+  color: $primary-color
+  
+.form-container__form-control
+  width: $form-control-width
+  height: $form-control-height
+  border-color: $form-control-border-color
+  border-width: $form-control-border-width
+  color: black
+
+.form-container__select option
+  color: $primary-color
+  background-color: $bg-color
+  padding: 10px
+
+.form-container__form-control.form-container__textarea
+  height: $textarea-height
+  width: $textarea-width
+
+.form-container__btn
+  background-color: $form-control-btn-bg-color
+  color: $form-control-btn-color
+  border: 2px solid #ffffff
+  font-weight: bolder
+  &:hover
+    background-color: $primary-color
+    border: 2px solid $form-control-border-color
+    color: $bg-color
+
+
