@@ -147,4 +147,25 @@ function do_upload_images($userInputName, $uploadPath){
 	
 	}
 }
+
+
+// get datetime
+function getDatetimeArray () {
+	$date = date ('Y-m-d');
+	$time = date ('H:i:s');
+	$datetime = [
+		'date' => $date,
+		'time' => $time
+	];
+	return $datetime;
+}
+
+function getDateTime () {
+	$datetime = getDatetimeArray ();
+	return $datetime['date'].' '.$datetime['time'];
+}
+
+
+
+
 ?>

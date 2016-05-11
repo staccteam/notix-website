@@ -5,7 +5,7 @@
     <div class="container row">
         <div class="login-form col m6 s12">
             <p>Faculty Login</p>
-            <?= form_open('auth/faculty/login'); ?>
+            <?= form_open('auth/loginFaculty'); ?>
                 <div>
                     <input type="text" name="username" class="form-fields" placeholder="username or email"></input><br>
                     <input type="password" name="password" class="form-fields" placeholder="password"></input><br>
