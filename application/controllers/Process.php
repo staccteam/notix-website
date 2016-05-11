@@ -18,6 +18,10 @@ class Process extends CI_Controller{
     	return $notifications;
     }
 
+    public function getSingleNotification($not_id) {
+    	$notification = _getData (DB_PREFIX.'notifications', null, [''])
+    }
+
     public function registerUser () {
     	$this->load->model('student_model');
     	$userdata = $this->input->post();
@@ -25,6 +29,8 @@ class Process extends CI_Controller{
     	if ($flag) {
     		$this->output->set_header('Access-Control-Allow-Origin: *');
     		$this->output->set_output(true);
+    	} else {
+    		return false;
     	}
     }
 }

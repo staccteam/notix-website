@@ -16,6 +16,7 @@ class Student_model extends CI_Model{
     		'branch'=>$userdata['branch'],
     		'active'=>true,
     		'verified'=>false,
+            'device_gcm_id' => $userdata['device_gcm_id'],
             'created_at' => getDateTime (),
             'updated_at' => getDateTime ()
     	];
