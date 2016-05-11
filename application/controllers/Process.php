@@ -13,13 +13,13 @@ class Process extends CI_Controller{
     	if ($type == 'json') {
     		$this->output->set_header('Access-Control-Allow-Origin: *');
     		$this->output->set_output (json_encode($notifications));
-    		exit;
+    		return;
     	} 
     	return $notifications;
     }
 
     public function getSingleNotification($not_id) {
-    	$notification = _getData (DB_PREFIX.'notifications', null, [''])
+    	$notification = _getData (DB_PREFIX.'notifications', null, ['']);
     }
 
     public function registerUser () {
