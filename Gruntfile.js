@@ -26,12 +26,12 @@ module.exports = function(grunt) {
             dynamic: {
               files: [{
                 expand: true,
-                cwd: 'webroot/img/',
+                cwd: 'img/',
                 src: [
                     '*.{png,jpg,gif,svg}',
                     '**/*.{png,jpg,gif,svg}'
                 ],
-                dest: 'webroot/img/'
+                dest: 'img/'
               }]
             }
         },
@@ -42,8 +42,7 @@ module.exports = function(grunt) {
                     style:'compressed'
                 },
                 files:{
-                    'css/build/style.min.css':'css/style.scss',
-                    'css/build/admin/style.css':'css/admin/style.scss'
+                    'css/style.css':'scss/style.scss'
                 }
             }
         },
@@ -61,7 +60,7 @@ module.exports = function(grunt) {
                 ]
             },
             dist:{
-                src: ['css/build/style.css', 'css/build/admin/style.css']
+                src: ['css/style.css']
             }
         },
 
@@ -82,14 +81,10 @@ module.exports = function(grunt) {
             },
             css: {
                 files: [
-                    'css/admin/style.scss',
-                    'css/admin/main.sass',
-                    'css/style.scss',
-                    'css/main.sass',
-                    'css/_animations.sass',
-                    'css/_fonts.sass',
-                    'css/_bits.sass',
-                    'css/_base.sass'
+                    'scss/_bits.scss',
+                    'scss/_modal_component.scss',
+                    'scss/_modals.scss',
+                    'scss/style.scss'
                 ],
                 tasks: [
                     'sass', 'postcss'
