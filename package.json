@@ -1,0 +1,23 @@
+{
+    "name": "notix-website",
+    "version": "0.1.0",
+    "author": "Stacc Pvt. Ltd.",
+    "devDependencies": {
+    "autoprefixer": "*",
+    "grunt": "*",
+    "grunt-browser-sync": "*",
+    "grunt-contrib-connect": "*",
+    "grunt-contrib-imagemin": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-nodeunit": "*",
+    "grunt-contrib-sass": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-postcss": "*",
+    "es6-promise": "*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "http://bitbucket.org/staccteam/notix-website.git"
+    }
+}

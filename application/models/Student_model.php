@@ -5,17 +5,20 @@ class Student_model extends CI_Model{
         $this->load->database();
     }
 
-    public function register($firstName, $lastName, $email, $password, $mobile, $enrollment, $branch, $active, $verify){
+    public function register($userdata){
     	$data = [
-    		'first_name'=>$firstName,
-    		'last_name'=>$lastName,
-    		'email'=>$email,
-            'password'=>$password,
-    		'mobile'=>$mobile,
-    		'enrollment'=>$enrollment,
-    		'branch'=>$branch,
-    		'active'=>$active,
-    		'verified'=>$verify
+    		'first_name'=>$userdata['first_name'],
+    		'last_name'=>$userdata['last_name'],
+    		'email'=>$userdata['email'],
+            'password'=>$userdata['password'],
+    		'mobile'=>$userdata['mobile'],
+    		'enrollment'=>$userdata['enrollment'],
+    		'branch'=>$userdata['branch'],
+    		'active'=>true,
+    		'verified'=>false,
+            'device_gcm_id' => $userdata['device_gcm_id'],
+            'created_at' => getDateTime (),
+            'updated_at' => getDateTime ()
     	];
 
     	$isExecuted = $this->db->insert(DB_PREFIX.'students', $data);

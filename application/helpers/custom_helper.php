@@ -147,4 +147,54 @@ function do_upload_images($userInputName, $uploadPath){
 	
 	}
 }
+
+
+// get datetime
+function getDatetimeArray () {
+	$date = date ('Y-m-d');
+	$time = date ('H:i:s');
+	$datetime = [
+		'date' => $date,
+		'time' => $time
+	];
+	return $datetime;
+}
+
+function getDateTime () {
+	$datetime = getDatetimeArray ();
+	return $datetime['date'].' '.$datetime['time'];
+}
+
+// common get data
+function _getData ($table, $select = null, array $condition = null) {
+	$ci =& get_instance();
+	$ci->load->database();
+	
+	if (empty($condition) && !empty($select)) {
+		$ci->db->select (compact('select'));
+		$query = $ci->db->get ($table);
+	} else if (empty($select) && !empty($condition)) {
+		$query = $ci->db->get_where ($table, $condition);
+	} else {
+		$query = $ci->db->get ($table);
+	}
+	return $query->result_array();
+}
+
+function _insertData ($data, $table) {
+	$ci =& get_instance ();
+	$ci->load->database();
+
+	$ci->db->insert ($table, $data);
+	$affectedRow = $ci->db->affected_rows();
+	if ($affectedRow == 1) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+
+
 ?>

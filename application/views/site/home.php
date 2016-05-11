@@ -2,10 +2,10 @@
     <section class="parallax">
         <p>An all new way to connect is here.</p>
     </section>
-    <div class="container group">
-        <div class="login-form col span_2_of_4">
+    <div class="container row">
+        <div class="login-form col m6 s12">
             <p>Faculty Login</p>
-            <?= form_open('auth/faculty/login'); ?>
+            <?= form_open('auth/loginFaculty'); ?>
                 <div>
                     <input type="text" name="username" class="form-fields" placeholder="username or email"></input><br>
                     <input type="password" name="password" class="form-fields" placeholder="password"></input><br>
@@ -13,7 +13,7 @@
                 <input type="submit" class="login-btn" name="login-btn" value="LOGIN"></input>
             <?= form_close(); ?>
         </div>
-        <div class="message-box col span_2_of_4">
+        <div class="message-box col m6 s12">
             <div class="wrapper">
                 <h1>What is Notix?</h1>
                 <p>
