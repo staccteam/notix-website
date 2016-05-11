@@ -1,5 +1,7 @@
 application/config/config.php
+application/config/database.php
 .sass-cache/
 node_modules/
 attachments/
+sqlbuddy/
 images/
