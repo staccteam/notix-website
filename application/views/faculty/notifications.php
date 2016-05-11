@@ -12,7 +12,6 @@
                 </tr>
                 <?php foreach ($notifications as $n): ?>
                 <tr >
-                    <td><?= $n['id']; ?></td>
                     <td><?= $n['title']; ?></td>
                     <?php
                     if (!function_exists('echo_short')){
