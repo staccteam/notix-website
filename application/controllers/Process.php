@@ -19,7 +19,7 @@ class Process extends CI_Controller{
     }
 
     public function getSingleNotification($not_id) {
-    	$notification = _getData (DB_PREFIX.'notifications', null, [''])
+    	$notification = _getData (DB_PREFIX.'notifications', null, ['']);
     }
 
     public function registerUser () {
