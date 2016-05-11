@@ -165,6 +165,24 @@ function getDateTime () {
 	return $datetime['date'].' '.$datetime['time'];
 }
 
+// common get data
+function _getData ($table, $select = null, array $condition = null) {
+	$ci =& get_instance();
+	$ci->load->database();
+	
+	if (empty($condition) && !empty($select)) {
+		$ci->db->select (compact('select'));
+		$query = $ci->db->get ($table);
+	} else if (empty($select) && !empty($condition)) {
+		$query = $ci->db->get_where ($table, $condition);
+	} else {
+		$query = $ci->db->get ($table);
+	}
+	return $query->result_array();
+	
+
+}
+
 
 
 
