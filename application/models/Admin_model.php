@@ -8,7 +8,9 @@ class Admin_model extends CI_Model{
     public function addAdmin($username, $password){
         $data = [
             'username' => $username,
-            'password' => hash_password($password)
+            'password' => hash_password($password),
+            'created_at' => getDateTime (),
+            'updated_at' => getDateTime ()
         ];
         $this->db->insert(DB_PREFIX.'admins', $data);
     }
