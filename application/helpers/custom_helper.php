@@ -179,8 +179,19 @@ function _getData ($table, $select = null, array $condition = null) {
 		$query = $ci->db->get ($table);
 	}
 	return $query->result_array();
-	
+}
 
+function _insertData ($data, $table) {
+	$ci =& get_instance ();
+	$ci->load->database();
+
+	$ci->db->insert ($table, $data);
+	$affectedRow = $ci->db->affected_rows();
+	if ($affectedRow == 1) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 
