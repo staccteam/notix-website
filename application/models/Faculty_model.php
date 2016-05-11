@@ -40,7 +40,9 @@ class Faculty_model extends CI_Model{
         $data = [
             'username'=>$username,
             'title'=>$title,
-            'message'=>$message
+            'message'=>$message,
+            'created_at' => getDateTime(),
+            'updated_at' => getDateTime()
         ];
 
         $this->db->trans_start(); //transaction start

@@ -8,8 +8,8 @@
             <span onclick="window.location='<?= base_url(); ?>faculty/notifications'" class="col span_1_of_4 tile-item">
                 <p><i class="fa fa-trash-o"></i> Delete</p>
             </span>
-            <span onclick="window.location='<?= base_url(); ?>faculty/profile/<?php echo $faculty[0]['username'] ?>'" class="col span_1_of_4 tile-item">
-                <p><i class="fa fa-user"></i> Profile</p>
+            <span onclick="window.location='<?= base_url(); ?>faculty/students/'" class="col span_1_of_4 tile-item">
+                <p><i class="fa fa-user"></i> Students</p>
             </span>
         </div>
     </div>

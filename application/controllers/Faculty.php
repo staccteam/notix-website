@@ -20,13 +20,22 @@ class Faculty extends CI_Controller{
         $this->load->view('templates/_footer');
     }
 
-    public function profile($username){
-        $data['title'] = "Edit Profile";
-        $data['faculty'] = $this->faculty_model->getFacultyProfileByUsername($username);
+    // public function profile($username){
+    //     $data['title'] = "Edit Profile";
+    //     $data['faculty'] = $this->faculty_model->getFacultyProfileByUsername($username);
+
+    //     $this->load->view('templates/_header', $data);
+    //     $this->load->view('templates/_faculty_header', $data);
+    //     $this->load->view('faculty/profile', $data);
+    //     $this->load->view('templates/_footer');
+    // }
+
+    public function students () {
+        $data['students'] = _getData (DB_PREFIX.'students');
 
         $this->load->view('templates/_header', $data);
         $this->load->view('templates/_faculty_header', $data);
-        $this->load->view('faculty/profile', $data);
+        $this->load->view('faculty/students', $data);
         $this->load->view('templates/_footer');
     }
 
@@ -59,7 +68,7 @@ class Faculty extends CI_Controller{
 
     public function notifications(){
         $data['title'] = 'Delete Notifications';
-        $data['notifications'] = $this->faculty_model->getNotifications();
+        $data['notifications'] = _getData (DB_PREFIX.'notifications', null, ['username'=> $this->session->userdata('faculty_username')]);
 
         $this->load->view('templates/_header', $data);
         $this->load->view('templates/_faculty_header', $data);
