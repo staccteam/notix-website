@@ -59,7 +59,7 @@ class Admin_model extends CI_Model{
         ];
         $this->db->insert(DB_PREFIX.'faculties', $data);
         $rowsAffected = $this->db->affected_rows();
-        if ($rows_affected > 0){
+        if ($rowsAffected > 0){
             return true;
         }else{
             return false;
