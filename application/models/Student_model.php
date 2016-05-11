@@ -15,7 +15,9 @@ class Student_model extends CI_Model{
     		'enrollment'=>$enrollment,
     		'branch'=>$branch,
     		'active'=>$active,
-    		'verified'=>$verify
+    		'verified'=>$verify,
+            'created_at' => getDateTime (),
+            'updated_at' => getDateTime ()
     	];
 
     	$isExecuted = $this->db->insert(DB_PREFIX.'students', $data);
