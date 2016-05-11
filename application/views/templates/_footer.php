@@ -1,5 +1,6 @@
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?= base_url(); ?>js/libs/jquery.min.js"><\/script>')</script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script src="<?= base_url(); ?>js/build/plugins.min.js"></script>
     <script src="<?= base_url(); ?>js/build/main.min.js"></script>
     
@@ -13,7 +14,7 @@
                 <p>Notix is a project for</p><br>
                 <p><a target="_blank" href="http://hcet.hitkarini.com"><img src="<?= base_url(); ?>img/hcet-logo.png"></a></p>
                 <br><hr><br>
-                <p>Made with <i class="fa fa-heart"></i> in Jabalpur | An open source project by <a target="_blank" href="http://stacc.co">Stacc</a></p>
+                <p>An open source project by <a target="_blank" href="http://stacc.co">Stacc</a></p>
             </div>
         </div>
     </div>
