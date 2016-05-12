@@ -77,6 +77,21 @@ class Faculty extends CI_Controller{
         if (isset($notification_id)){
             $uploadPath = 'faculty/'.$this->session->userdata('faculty_username').'/';
             do_upload_attachment($userfile, $uploadPath, $notification_id); // custom file upload function (filename input, upload directory after attachment folder)
+            # send post request to GCM server
+            // $url = 'http://server.com/path';
+            // $data = array('key1' => 'value1', 'key2' => 'value2');
+            // // use key 'http' even if you send the request to https://...
+            // $options = array(
+            //     'http' => array(
+            //         'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+            //         'method'  => 'POST',
+            //         'content' => http_build_query($data)
+            //     )
+            // );
+            // $context  = stream_context_create($options);
+            // $result = file_get_contents($url, false, $context);
+            // if ($result === FALSE) { /* Handle error */ }
+            // var_dump($result);
         }else{
             $this->session->set_flashdata('error', 'There was some error in creating the notification!');
         }
