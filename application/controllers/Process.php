@@ -8,11 +8,14 @@ class Process extends CI_Controller{
         $this->load->model('student_model');
     }
 
-    public function getNotifications ($branch = null, $type) {
+    public function getNotifications ($type, $branch = null) {
         if (empty($branch)) {
         $notifications = _getData (DB_PREFIX.'notifications');
     } else {
-        $notifications = _getData (DB_PREFIX.'notifications', null, ['branch_id' => $branch]);    // this data will be provided from the client side for accessing the notifications related to a particular branch.
+        $branch_id = _getData(DB_PREFIX.'branches', 'id', ['branch' => $branch]);
+        $branch_id = $branch_id[0]['id'];
+        $notifications = _getData (DB_PREFIX.'notifications', null, ['branch_id' => $branch_id]);    // this data will be provided from the client side for accessing the notifications related to a particular branch.
+        // var_dump($notifications);
     }
     	if ($type == 'json') {
     		$this->output->set_header('Access-Control-Allow-Origin: *');
@@ -23,7 +26,11 @@ class Process extends CI_Controller{
     }
 
     public function getSingleNotification($not_id) {
-    	$notification = _getData (DB_PREFIX.'notifications', null, ['']);
+    	$notification = _getData (DB_PREFIX.'notifications', null, ['id' => $not_id]);
+
+        $this->output->set_header('Access-Control-Allow-Origin: *');
+        $this->output->set_output (json_encode($notification));
+        return;
     }
 
     public function registerUser () {
