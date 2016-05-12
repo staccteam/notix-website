@@ -16,8 +16,8 @@
                 $branches = _getData(DB_PREFIX.'branches');
                 if (isset ($branches[0])): 
                 ?>
-                    <select name="branch">
-                        <option disabled="true" selected="true">select...</option>
+                    <select name="branch" class="browser-default">
+                        <option value="" disabled selected>select...</option>
                     <?php foreach ($branches as $branch): ?>
                         <option value="<?= $branch['id'] ?>"><?= $branch['branch'] ?></option>
                     <?php endforeach; ?>
