@@ -8,12 +8,16 @@ class Process extends CI_Controller{
         $this->load->model('student_model');
     }
 
-    public function getNotifications ($type, $branch) {
-    	$notifications = _getData (DB_PREFIX.'notifications', null, ['branch_id' => $branch]);    // this data will be provided from the client side for accessing the notifications related to a particular branch.
+    public function getNotifications ($branch = null, $type) {
+        if (empty($branch)) {
+        $notifications = _getData (DB_PREFIX.'notifications');
+    } else {
+        $notifications = _getData (DB_PREFIX.'notifications', null, ['branch_id' => $branch]);    // this data will be provided from the client side for accessing the notifications related to a particular branch.
+    }
     	if ($type == 'json') {
     		$this->output->set_header('Access-Control-Allow-Origin: *');
     		$this->output->set_output (json_encode($notifications));
-    		exit;
+    		return;
     	} 
     	return $notifications;
     }
