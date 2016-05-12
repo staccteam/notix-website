@@ -36,11 +36,12 @@ class Faculty_model extends CI_Model{
     	return $query->result_array();
     }
 
-    public function createNotification($username, $title, $message){
+    public function createNotification($username, $title, $message, $branch_id){
         $data = [
             'username'=>$username,
             'title'=>$title,
             'message'=>$message,
+            'branch_id' => $branch_id,
             'created_at' => getDateTime(),
             'updated_at' => getDateTime()
         ];
