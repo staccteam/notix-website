@@ -80,7 +80,7 @@ class Faculty extends CI_Controller{
     public function create(){
         $title = $this->input->post('msg-title');
         $message = $this->input->post('msg-body');
-        $branch_id = $this->input->post('branch');
+        $branch_id = $this->session->userdata('faculty_branch_id');
         $userfile = 'msg-attachment'; //name of the file input field
 
         $notification_id = $this->faculty_model->createNotification($this->session->userdata('faculty_username'), $title, $message, $branch_id);

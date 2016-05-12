@@ -11,19 +11,6 @@
                     <input name="msg-attachment" id="msg-attachment" type="file" accept=".doc,.docx,.pdf,.jpg,.jpeg,.png"/>
                     <p style="color:gray;">Allowed File types: .doc, .docx, .pdf, .jpg, .jpeg and .png</p>
                 </p>
-                <p>
-                <?php 
-                $branches = _getData(DB_PREFIX.'branches');
-                if (isset ($branches[0])): 
-                ?>
-                    <select name="branch" class="browser-default">
-                        <option value="" disabled selected>select...</option>
-                    <?php foreach ($branches as $branch): ?>
-                        <option value="<?= $branch['id'] ?>"><?= $branch['branch'] ?></option>
-                    <?php endforeach; ?>
-                    </select>
-                <?php endif; ?>
-                </p>
                 <p><input type="submit" value="Send"/></p>
             <?= form_close(); ?>
         </div>

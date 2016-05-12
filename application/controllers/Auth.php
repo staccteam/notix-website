@@ -111,6 +111,7 @@ class Auth extends CI_Controller{
 			$this->session->set_userdata('faculty_last_name', $faculty[0]['last_name']);
 			$this->session->set_userdata('faculty_email', $faculty[0]['email']);
 			$this->session->set_userdata('faculty_mobile', $faculty[0]['mobile']);
+			$this->session->set_userdata('faculty_branch_id', $faculty[0]['branch_id']);
 			redirect('faculty/home');
 		}else{
 			die();
