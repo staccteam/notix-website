@@ -171,9 +171,12 @@ function _getData ($table, $select = null, array $condition = null) {
 	$ci->load->database();
 	
 	if (empty($condition) && !empty($select)) {
-		$ci->db->select (compact('select'));
+		$ci->db->select ([$select]);
 		$query = $ci->db->get ($table);
 	} else if (empty($select) && !empty($condition)) {
+		$query = $ci->db->get_where ($table, $condition);
+	} else if (!empty($select) && !empty($condition)) {
+		$ci->db->select([$select]);
 		$query = $ci->db->get_where ($table, $condition);
 	} else {
 		$query = $ci->db->get ($table);
