@@ -233,7 +233,7 @@ function sendNotification ($data, $branch_id) {
     
     var_dump($result);
     echo $result;
-
+    die();
 }
 
 
