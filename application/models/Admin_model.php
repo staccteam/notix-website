@@ -118,7 +118,7 @@ class Admin_model extends CI_Model{
     public function getFaculties(){
         $sql = 'select `'.DB_PREFIX.'faculties`.*, `'.DB_PREFIX.'branches`.branch as branch_name from `'.DB_PREFIX.'faculties`
                     left join `'.DB_PREFIX.'branches`
-                    on `'.DB_PREFIX.'faculties`.branch = `'.DB_PREFIX.'branches`.id;';
+                    on `'.DB_PREFIX.'faculties`.branch_id = `'.DB_PREFIX.'branches`.id;';
         $query = $this->db->query($sql);
         return $query->result_array();
     }
