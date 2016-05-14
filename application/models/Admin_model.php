@@ -52,7 +52,7 @@ class Admin_model extends CI_Model{
             'mobile' => $mobile,
             'username' => $username,
             'password' => $password,
-            'branch' => $branch,
+            'branch_id' => $branch,
             'status' => $status,
             'created_at' => getDateTime (),
             'updated_at' => getDateTime ()
@@ -74,7 +74,7 @@ class Admin_model extends CI_Model{
                 'email' => $email,
                 'mobile' => $mobile,
                 'username' => $username,
-                'branch' => $branch,
+                'branch_id' => $branch,
                 'status' => $status,
                 'updated_at' => getDateTime ()
             ];
@@ -87,7 +87,7 @@ class Admin_model extends CI_Model{
                 'mobile' => $mobile,
                 'username' => $username,
                 'password' => $password,
-                'branch' => $branch,
+                'branch_id' => $branch,
                 'status' => $status,
                 'updated_at' => getDateTime ()
             ];
