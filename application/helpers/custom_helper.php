@@ -197,6 +197,40 @@ function _insertData ($data, $table) {
 	}
 }
 
+function sendNotification ($data, $branch_id) {
+	$url = 'https://android.googleapis.com/gcm/send';   // GCM Server Address
+    $authorizationKey = $authorizationKey;                                       // Server API Key
+    // Registered devices to which the notification will be sent
+    $registeredIDs = _getData (DB_PREFIX.'students', 'device_gcm_id', ['branch_id' => $branch_id]); 
+
+    $fields = [
+        'registration_ids' => $registeredIDs,
+        'data' => $data
+    ];
+    $headers = [ 
+            'Authorization: key=' . AUTHORIZATION_KEY,
+            'Content-Type: application/json'
+        ];
+    
+    // Open connection
+    $ch = curl_init();
+    // Set the url, number of POST vars, POST data
+    curl_setopt( $ch, CURLOPT_URL, $url );
+    curl_setopt( $ch, CURLOPT_POST, true );
+    curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+     
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode( $fields ) );
+     
+    // Execute post
+    $result = curl_exec($ch);
+     
+    // Close connection
+    curl_close($ch);
+     
+    echo $result;
+}
+
 
 
 

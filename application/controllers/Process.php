@@ -8,6 +8,14 @@ class Process extends CI_Controller{
         $this->load->model('student_model');
     }
 
+    // returns json branch data  
+    public function getBranches () {
+        $branches = _getData (DB_PREFIX.'branches');
+        $this->output->set_header ('Access-Control-Allow-Origin: *');
+        $this->output->set_output (json_encode($branches));
+    }
+
+    // return all notifications for branch
     public function getNotifications ($type, $branch = null) {
         if (empty($branch)) {
         $notifications = _getData (DB_PREFIX.'notifications');
@@ -25,6 +33,7 @@ class Process extends CI_Controller{
     	return $notifications;
     }
 
+    // return single notification by notification_id
     public function getSingleNotification($not_id) {
     	$notification = _getData (DB_PREFIX.'notifications', null, ['id' => $not_id]);
 
@@ -33,6 +42,7 @@ class Process extends CI_Controller{
         return;
     }
 
+    // register the user to the database
     public function registerUser () {
     	$this->load->model('student_model');
     	$userdata = $this->input->post();
