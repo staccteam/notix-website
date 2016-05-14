@@ -6,7 +6,7 @@ class Faculty_model extends CI_Model{
     }
 
     public function login($username, $password){
-        // var_dump($username);
+        
     	if ($this->checkUsername($username)){
     		$faculty = $this->getFacultyByUsername($username);
             $isValid = check_password($password, $faculty[0]['password']);

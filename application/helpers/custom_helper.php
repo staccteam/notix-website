@@ -201,10 +201,14 @@ function sendNotification ($data, $branch_id) {
 	$url = 'https://android.googleapis.com/gcm/send';   // GCM Server Address
     $authorizationKey = $authorizationKey;                                       // Server API Key
     // Registered devices to which the notification will be sent
-    $registeredIDs = _getData (DB_PREFIX.'students', 'device_gcm_id', ['branch_id' => $branch_id]); 
+    $registeredIDs = _getData (DB_PREFIX.'students', 'device_gcm_id', ['branch_id' => $branch_id]);
+    $registeredIDsArray = null;
+    foreach ($registeredIDs as $regId) {
+    	array_push($registeredIDs, $regId['device_gcm_id']);
+    } 
 
     $fields = [
-        'registration_ids' => $registeredIDs,
+        'registration_ids' => $registeredIDsArray,
         'data' => $data
     ];
     $headers = [ 
@@ -227,8 +231,10 @@ function sendNotification ($data, $branch_id) {
      
     // Close connection
     curl_close($ch);
-     
+    
+    var_dump($result);
     echo $result;
+    die();
 }
 
 

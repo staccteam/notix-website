@@ -87,19 +87,20 @@ class Faculty extends CI_Controller{
         if (isset($notification_id)){
             $uploadPath = 'faculty/'.$this->session->userdata('faculty_username').'/';
             $userfileIsPresent = do_upload_attachment($userfile, $uploadPath, $notification_id); // custom file upload function (filename input, upload directory after attachment folder)
-            # send post request to GCM server
-            if ($userfileIsPresent)
-                $fullUploadPath = base_url().'attachments/'.$uploadPath;
-
-            $authorizationKey = '';                                       // Server API Key
+            
             // Notification Data to send to GCM Server
             $data = [
                 'title' => $title,
                 'message' => $message,
                 'userfile' => $userfileIsPresent,
-                'attachmentUrl' => $fullUploadPath
             ];
+
+            if ($userfileIsPresent){
+                $fullUploadPath = base_url().'attachments/'.$uploadPath;
+                $data['attachmentUrl'] = $fullUploadPath;
+            }
             sendNotification ($data, $branch_id);
+            $this->session->set_flashdata('success', 'Notification has been sent to the required group!');
         }else{
             $this->session->set_flashdata('error', 'There was some error in creating the notification!');
         }

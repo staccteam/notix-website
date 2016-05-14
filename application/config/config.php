@@ -18,8 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-// $config['base_url'] = 'http://localhost/projects/notix-website/';
-$config['base_url'] = 'http://hcetnotix.azurewebsites.net/';
+$config['base_url'] = 'http://localhost/projects/notix-website/';
+// $config['base_url'] = 'http://hcetnotix.azurewebsites.net/';
 
 /*
 |--------------------------------------------------------------------------
