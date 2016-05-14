@@ -13,7 +13,7 @@ class Student_model extends CI_Model{
             'password'=>$userdata['password'],
     		'mobile'=>$userdata['mobile'],
     		'enrollment'=>$userdata['enrollment'],
-    		'branch'=>$userdata['branch'],
+    		'branch_id'=>$userdata['branch_id'],
     		'active'=>true,
     		'verified'=>false,
             'device_gcm_id' => $userdata['device_gcm_id'],
