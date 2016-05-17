@@ -3,7 +3,7 @@
 class Process extends CI_Controller{
     public function __construct(){
         parent::__construct();
-
+        $this->output->set_header('Access-Control-Allow-Origin: *');
         $this->load->helper('custom');
         $this->load->model('student_model');
     }
@@ -57,7 +57,6 @@ class Process extends CI_Controller{
     	$userdata = $this->input->post();
     	$flag = $this->student_model->register($userdata);
     	if ($flag) {
-    		$this->output->set_header('Access-Control-Allow-Origin: *');
     		$this->output->set_output(true);
     	} else {
     		return false;
