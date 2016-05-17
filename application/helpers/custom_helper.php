@@ -222,9 +222,9 @@ function sendNotification ($data, $branch_id) {
 	$url = 'https://android.googleapis.com/gcm/send';   // GCM Server Address                                     // Server API Key
     // Registered devices to which the notification will be sent
     $registeredIDs = _getData (DB_PREFIX.'students', 'device_gcm_id', ['branch_id' => $branch_id]);
-    $registeredIDsArray = null;
+    $registeredIDsArray = [];
     foreach ($registeredIDs as $regId) {
-    	array_push($registeredIDs, $regId['device_gcm_id']);
+    	array_push($registeredIDsArray, $regId['device_gcm_id']);
     } 
 
     $fields = [
@@ -236,26 +236,39 @@ function sendNotification ($data, $branch_id) {
             'Content-Type: application/json'
         ];
     
+    // var_dump($registeredIDsArray);
+
+
+    $ci =& get_instance ();
+    $ci->load->library('curl');
+    $ci->curl->create($url);
+    $ci->curl->options([
+    	CURLOPT_POST => true,
+    	CURLOPT_HTTPHEADER => $headers, 
+    	CURLOPT_RETURNTRANSFER => true,
+    	CURLOPT_POSTFIELDS => json_encode( $fields )
+    	]
+    	);
+    $response = $ci->curl->execute();
+
     // Open connection
-    $ch = curl_init();
-    // Set the url, number of POST vars, POST data
-    curl_setopt( $ch, CURLOPT_URL, $url );
-    curl_setopt( $ch, CURLOPT_POST, true );
-    curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+    // $ch = curl_init();
+    // // Set the url, number of POST vars, POST data
+    // curl_setopt( $ch, CURLOPT_URL, $url );
+    // curl_setopt( $ch, CURLOPT_POST, true );
+    // curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers);
+    // curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
      
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode( $fields ) );
+    // curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode( $fields ) );
      
-    // Execute post
-    $result = curl_exec($ch);
+    // // Execute post
+    // $result = curl_exec($ch);
      
-    // Close connection
-    curl_close($ch);
-    
-    var_dump($result);
-    echo $result;
+    // // Close connection
+    // curl_close($ch);
+    var_dump($response);
     die();
-}
+}	
 
 
 
