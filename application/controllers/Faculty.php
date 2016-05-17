@@ -39,6 +39,26 @@ class Faculty extends CI_Controller{
         $this->load->view('templates/_footer');
     }
 
+    // render student edit page
+    public function editStudentPage ($studentID) {
+        $data['student'] = _getData (DB_PREFIX.'students', null, ['id'=>$studentID]);
+
+        $this->load->view('templates/_header', $data);
+        $this->load->view('templates/_faculty_header', $data);
+        $this->load->view('faculty/edit-student', $data);
+        $this->load->view('templates/_footer');
+    }
+
+    // update the student details
+    public function updateStudent() {
+        $data = $this->input->post ();
+        $flag = _updateData('students', $data, ['id'=>$data['id']]);
+        if ($flag)
+            redirect ('facutly/home');
+        else
+            redirect ('faculty/editStudentPage/'.$data['id']);
+    }
+
     public function updateProfileInfo(){
         $email = $this->input->post('email');
         $mobile = $this->input->post('mobile');
@@ -125,6 +145,18 @@ class Faculty extends CI_Controller{
         
 
         redirect('faculty/profile/'.$this->session->userdata('faculty_username'));
+    }
+
+    // Toggle Function
+    public function verifyStudent ($studentID, $action = true) {
+        $flag = $this->faculty_model->verifyStudent ($studentID, $action);
+        if ($flag){
+            $this->session->set_flashdata ('success', 'Students has been verified');
+            redirect ('faculty/students');
+        } else {
+            $this->session->set_flashdata ('error', 'There was some unusual error');
+            redirect ('faculty/students');
+        }
     }
 
     public function getNotificationById($id){

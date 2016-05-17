@@ -114,7 +114,6 @@ class Auth extends CI_Controller{
 			$this->session->set_userdata('faculty_branch_id', $faculty[0]['branch_id']);
 			redirect('faculty/home');
 		}else{
-			die();
 			$this->session->set_flashdata('error', 'Invalid Credentials');
 			redirect('/');
 		}

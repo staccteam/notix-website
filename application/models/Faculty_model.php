@@ -152,6 +152,20 @@ class Faculty_model extends CI_Model{
         $this->db->update(DB_PREFIX.'faculties', $data);
     }
 
+    // Verify Students
+    public function verifyStudent ($studentID, $action) {
+        $data = [
+            'verified' => $action
+        ];
+        $this->db->where('id', $studentID);
+        $flag = $this->db->update(DB_PREFIX.'students', $data);
+
+        if ($flag)
+            return true;
+        else 
+            return false;
+    }
+
     public function getNotifications(){
         $sql = 'SELECT `notix_notifications`.*, `notix_attachments`.file_name, `notix_attachments`.file_url 
                 FROM `notix_notifications` 

@@ -197,6 +197,27 @@ function _insertData ($data, $table) {
 	}
 }
 
+function _updateData ($table, $data, $condition) {
+	$ci =& get_instance ();
+	$ci->load->database();
+
+	$ci->db->where($condition);
+	$flag = $ci->db->update(DB_PREFIX.$table, $data);
+	if ($flag)
+		return true;
+	else
+		return false;
+}
+
+function getBranchNameByID($catID) {
+	$ci =& get_instance ();
+	$ci->load->database();
+
+	$branch = _getData (DB_PREFIX.'branches', 'branch', ['id'=>$catID]);
+
+	return $branch;
+}
+
 function sendNotification ($data, $branch_id) {
 	$url = 'https://android.googleapis.com/gcm/send';   // GCM Server Address                                     // Server API Key
     // Registered devices to which the notification will be sent

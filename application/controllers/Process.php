@@ -15,6 +15,15 @@ class Process extends CI_Controller{
         $this->output->set_output (json_encode($branches));
     }
 
+    // get branch name by id
+    public function getBranchNameByID ($branchID) {
+        $branch = getBranchNameByID($branchID);
+        $branchName = ['branchName' => $branch[0]['branch']];
+        $this->output->set_header ('Access-Control-Allow-Origin: *');
+        $this->output->set_output (json_encode($brachName));
+        die();
+    }
+
     // return all notifications for branch
     public function getNotifications ($type, $branch = null) {
         if (empty($branch)) {
