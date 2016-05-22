@@ -69,7 +69,7 @@ class Auth extends CI_Controller{
 		$gcmID = $this->input->post ('device_gcm_id');
 		if (!empty($gcmID)) {
 			if (! $this->checkGCMID($gcmID)) {
-				_updateData (DB_PREFIX.'students', ['device_gcm_id' => $gcmID], ['enrollment' => $enrollment])
+				_updateData (DB_PREFIX.'students', ['device_gcm_id' => $gcmID], ['enrollment' => $enrollment]);
 			}
 		}
 		$isValid = $this->student_model->login($enrollment);
