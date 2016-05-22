@@ -144,7 +144,6 @@ function do_upload_images($userInputName, $uploadPath){
 
 		$ci->session->set_flashdata('success', "The file has been uploaded successfully!");
 		return $image;
-	
 	}
 }
 
@@ -227,9 +226,16 @@ function sendNotification ($data, $branch_id) {
     	array_push($registeredIDsArray, $regId['device_gcm_id']);
     } 
 
+    echo 'Registerd Device Token Array: <br/><b>'; var_dump($registeredIDsArray);
+    echo '</b><br /><br/>';
+    echo 'Data Encoded in JSON format: <br/><b>';var_dump(json_encode($data));
+    echo '</b><br /><br />';
+    echo 'AUTHORIZATION KEY: <br/><b>';var_dump(AUTHORIZATION_KEY);
+    echo '</b><br />';
+
     $fields = [
         'registration_ids' => $registeredIDsArray,
-        'data' => $data
+        'data' => json_encode($data)
     ];
     $headers = [ 
             'Authorization: key=' . AUTHORIZATION_KEY,
@@ -239,17 +245,20 @@ function sendNotification ($data, $branch_id) {
     // var_dump($registeredIDsArray);
 
 
-    $ci =& get_instance ();
-    $ci->load->library('curl');
-    $ci->curl->create($url);
-    $ci->curl->options([
-    	CURLOPT_POST => true,
-    	CURLOPT_HTTPHEADER => $headers, 
-    	CURLOPT_RETURNTRANSFER => true,
-    	CURLOPT_POSTFIELDS => json_encode( $fields )
-    	]
-    	);
-    $response = $ci->curl->execute();
+    // $ci =& get_instance ();
+    // $ci->load->library('curl');
+    // $ci->curl->create($url);
+    // $ci->curl->options([
+    // 	CURLOPT_POST => true,
+    // 	CURLOPT_HTTPHEADER => $headers, 
+    // 	CURLOPT_RETURNTRANSFER => true,
+    // 	CURLOPT_POSTFIELDS => json_encode( $fields )
+    // 	]
+    // 	);
+    // $response = $ci->curl->execute();
+
+
+
 
     // Open connection
     // $ch = curl_init();
@@ -266,8 +275,69 @@ function sendNotification ($data, $branch_id) {
      
     // // Close connection
     // curl_close($ch);
-    var_dump($response);
-    die();
+
+
+    # method 3
+        // Insert real GCM API key from the Google APIs Console
+    // https://code.google.com/apis/console/   
+    $ids = $registeredIDsArray;     
+    $apiKey = AUTHORIZATION_KEY;
+
+    // Set POST request body
+    $post = array(
+                    'registration_ids'  => $ids,
+                    'data'              => $data,
+                 );
+
+    // Set CURL request headers 
+    $headers = array( 
+                        'Authorization: key=' . $apiKey,
+                        'Content-Type: application/json'
+                    );
+
+    // Initialize curl handle       
+    $ch = curl_init();
+
+    // Set URL to GCM push endpoint     
+    // https://android.googleapis.com/gcm/send
+    // http://gcm-http.googleapis.com/gcm/send
+    curl_setopt( $ch, CURLOPT_URL, 'https://android.googleapis.com/gcm/send' );
+
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
+    // Set request method to POST       
+    curl_setopt( $ch, CURLOPT_POST, true );
+
+    // Set custom request headers       
+    curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers );
+
+    // Get the response back as string instead of printing it       
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+
+    // Set JSON post data
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode( $post ) );
+
+    // Actually send the request    
+    $result = curl_exec( $ch );
+
+    // Handle errors
+    if ( curl_errno( $ch ) )
+    {
+        echo 'GCM error: ' . curl_error( $ch );
+    }
+
+    // Close curl handle
+    curl_close( $ch );
+
+    // Debug GCM response 
+    $arrayObj = json_decode($result);     
+    $response = (array)$arrayObj;
+    $flag = $response["success"]; 
+   	if ($flag)
+   		return true;
+   	else 
+   		return false;
 }	
 
 

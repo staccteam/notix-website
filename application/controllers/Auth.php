@@ -54,14 +54,29 @@ class Auth extends CI_Controller{
 		}
 	}
 
+	// check GCM ID, if mis-match then update new one
+	private function checkGCMID ($gcmID) {
+		$gcm = _getData (DB_PREFIX.'students', 'device_gcm_id', ['device_gcm_id' => $gcmID]);
+		if (!empty($gcm))
+			return true;
+		else
+			return false;
+	}
+	// Authenticate Student Login
 	public function loginStudent(){
-		$email = $this->input->post('email');
+		$username = $this->input->post('enrollment');
 		$password = $this->input->post('password');
-		$isValid = $this->student_model->login($email);
+		$gcmID = $this->input->post ('device_gcm_id');
+		if (!empty($gcmID)) {
+			if (! $this->checkGCMID($gcmID)) {
+				_updateData (DB_PREFIX.'students', ['device_gcm_id' => $gcmID], ['enrollment' => $enrollment])
+			}
+		}
+		$isValid = $this->student_model->login($enrollment);
 
 		if ($isValid){
 			if (check_password($password, $isValid[0]['password'])){
-				$student = $this->student_model->get_student_details_by_email($email);
+				$student = _getData (DB_PREFIX.'students', null, ['enrollment' => $enrollment]);
 
 				foreach ($student as $stud){
 					$this->session->set_userdata('stud_id', $stud['id']);
@@ -112,6 +127,7 @@ class Auth extends CI_Controller{
 			$this->session->set_userdata('faculty_email', $faculty[0]['email']);
 			$this->session->set_userdata('faculty_mobile', $faculty[0]['mobile']);
 			$this->session->set_userdata('faculty_branch_id', $faculty[0]['branch_id']);
+			$this->session->set_userdata('faculty_is_admin', $faculty[0]['is_admin']);
 			redirect('faculty/home');
 		}else{
 			$this->session->set_flashdata('error', 'Invalid Credentials');

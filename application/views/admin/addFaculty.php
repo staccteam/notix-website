@@ -50,6 +50,12 @@
                     </div>
                     <?php endif; ?>
                     </div>
+                    <div class="row">
+                    <div class="input-field col s12">
+                      <input id="is_admin" type="checkbox" name="is_admin">
+                      <label for="is_admin">Is Admin?</label>
+                    </div>
+                  </div>
                     <input class="waves-effect waves-light btn" type="submit" value="Create"/>
                 <?= form_close(); ?>
             </div>

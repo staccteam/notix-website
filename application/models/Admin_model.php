@@ -43,7 +43,7 @@ class Admin_model extends CI_Model{
     	return $query->result_array();
     }
 
-    public function createFaculty($firstName, $lastName, $email, $mobile, $username, $password, $branch, $status){
+    public function createFaculty($firstName, $lastName, $email, $mobile, $username, $password, $branch, $status, $isAdmin=false){
         $password = hash_password($password);
         $data = [
             'first_name' => $firstName,
@@ -57,6 +57,9 @@ class Admin_model extends CI_Model{
             'created_at' => getDateTime (),
             'updated_at' => getDateTime ()
         ];
+        if ($isAdmin)
+            $data['is_admin'] = true;
+
         $this->db->insert(DB_PREFIX.'faculties', $data);
         $rowsAffected = $this->db->affected_rows();
         if ($rowsAffected > 0){
@@ -66,7 +69,7 @@ class Admin_model extends CI_Model{
         }
     }
 
-    public function updateFaculty($id, $firstName, $lastName, $email, $mobile, $username, $password=NULL, $branch, $status){
+    public function updateFaculty($id, $firstName, $lastName, $email, $mobile, $username, $password=NULL, $branch, $status, $isAdmin = false){
         if ($password == NULL){
             $data = [
                 'first_name' => $firstName,
@@ -92,6 +95,9 @@ class Admin_model extends CI_Model{
                 'updated_at' => getDateTime ()
             ];
         }
+
+        if ($isAdmin)
+            $data['is_admin'] = true;
         
         $this->db->where('id', $id);
         $this->db->update(DB_PREFIX.'faculties', $data);

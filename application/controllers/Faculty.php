@@ -98,29 +98,64 @@ class Faculty extends CI_Controller{
 
     // This function creates a notification and saves it in the database.
     public function create(){
+        # global vars for the function
+        $flag = null;
+        $isMultiBranch = true;
+        $branch_id = null;
+
+        # form data
         $title = $this->input->post('msg-title');
         $message = $this->input->post('msg-body');
-        $branch_id = $this->session->userdata('faculty_branch_id');
+        $branchSelect = $this->input->post('branch_select[]');
         $userfile = 'msg-attachment'; //name of the file input field
+        // if multiple branches are not selected
+        if (! isset ($branchSelect)) {
+            $isMultiBranch = false;
+            $branch_id = $this->session->userdata('faculty_branch_id');
+        } else {
+            $branch_id = json_encode($branchSelect);
+        }
 
+        # save notification to the database and return notification ID
         $notification_id = $this->faculty_model->createNotification($this->session->userdata('faculty_username'), $title, $message, $branch_id);
+
+        # if newly created notification ID is present
         if (isset($notification_id)){
             $uploadPath = 'faculty/'.$this->session->userdata('faculty_username').'/';
             $userfileIsPresent = do_upload_attachment($userfile, $uploadPath, $notification_id); // custom file upload function (filename input, upload directory after attachment folder)
-            
+            $facultyName = $this->session->userdata('faculty_first_name').' '.$this->session->userdata('faculty_last_name');
             // Notification Data to send to GCM Server
             $data = [
-                'title' => $title,
-                'message' => $message,
+                'title' => 'New Notification',
+                'message' => $facultyName.': '.$title,
                 'userfile' => $userfileIsPresent,
+                'style' => 'inbox',
+                'content-available' => 1,
+                'summaryText' => 'There are %n% notifications'                
             ];
 
+            # Get back to it and attach file name at the end of the path
             if ($userfileIsPresent){
-                $fullUploadPath = base_url().'attachments/'.$uploadPath;
+                $fullUploadPath = base_url().'attachments/'.$uploadPath.'/'.$userfileIsPresent['file_name'];
                 $data['attachmentUrl'] = $fullUploadPath;
             }
-            sendNotification ($data, $branch_id);
-            $this->session->set_flashdata('success', 'Notification has been sent to the required group!');
+
+            # if notification is to be sent to multiple branches.
+            if ($isMultiBranch) {
+                foreach ($branchSelect as $branchID) {
+                    $flag = sendNotification ($data, $branchID);    // sends GCM notification
+                }
+            } else {
+                $flag = sendNotification ($data, $branch_id);   // sends GCM notification
+            }
+               
+            # if notification sent successfully
+            if ($flag) {
+                $this->session->set_flashdata('success', 'Notification has been sent to the required group!');
+            } else {
+                 $this->session->set_flashdata('success', 'Notification has been sent in message!');
+            }
+            
         }else{
             $this->session->set_flashdata('error', 'There was some error in creating the notification!');
         }

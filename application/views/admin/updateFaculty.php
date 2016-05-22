@@ -24,6 +24,10 @@
                         <?php endforeach; ?>
                     </select><br><br>
                     <?php endif; ?>
+                    <div class="input-field col s12">
+                      <input id="is_admin" type="checkbox" name="is_admin">
+                      <label for="is_admin">Is Admin?</label>
+                    </div>
                     <input type="submit" value="Update"/>
                 <?= form_close(); ?>
             </div>

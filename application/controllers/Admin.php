@@ -42,6 +42,18 @@ class Admin extends CI_Controller{
         $this->load->view('templates/_footer');
     }
 
+    public function metaPage () {
+        $data['title'] = "Additional Information";
+        $metaData = _getData (DB_PREFIX.'meta', null, ['meta_key' => 'about']);
+        if (! empty($metaData))
+            $data['about'] = unserialize($metaData[0]['value']);
+
+        $this->load->view('templates/_header', $data);
+        $this->load->view('templates/_admin_header', $data);
+        $this->load->view('admin/meta');
+        $this->load->view('templates/_footer');
+    }
+
     public function updateFaculty($id){
         $data['title'] = "Update Faculty";
         $data['faculty'] = $this->admin_model->getFacultyById($id);
@@ -77,9 +89,10 @@ class Admin extends CI_Controller{
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $branch = $this->input->post('branch');
+        $isAdmin = $this->input->post('is_admin');
         $status = true;
 
-        $isSuccessful = $this->admin_model->createFaculty($firstName, $lastName, $email, $mobile, $username, $password, $branch, $status);
+        $isSuccessful = $this->admin_model->createFaculty($firstName, $lastName, $email, $mobile, $username, $password, $branch, $status, $isAdmin);
 
         if ($isSuccessful){
             if ($this->input->is_ajax_request()){
@@ -102,9 +115,10 @@ class Admin extends CI_Controller{
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $branch = $this->input->post('branch');
+        $isAdmin = $this->input->post('is_admin');
         $status = true;
 
-        $isSuccessful = $this->admin_model->updateFaculty($id, $firstName, $lastName, $email, $mobile, $username, $password, $branch, $status);
+        $isSuccessful = $this->admin_model->updateFaculty($id, $firstName, $lastName, $email, $mobile, $username, $password, $branch, $status, $isAdmin);
 
         if ($isSuccessful){
             if ($this->input->is_ajax_request()){
@@ -133,5 +147,33 @@ class Admin extends CI_Controller{
             redirect('admin/home');
         }
         
+    }
+
+    public function addMetaData () {
+        $this->load->database ();
+        $formdata = $this->input->post ();
+        $serializedData = serialize($formdata);
+        $data = [
+            'meta_key' => 'about',
+            'value' => $serializedData
+        ];
+        if ($this->checkMeta ('about')) {
+            $data ['updated_at'] = getDateTime();
+            $this->db->update(DB_PREFIX.'meta', $data);
+        } else {
+            $data ['created_at'] = getDateTime ();
+            $this->db->insert(DB_PREFIX.'meta', $data);
+        }
+        redirect ('admin/metaPage');
+
+    }
+    private function checkMeta ($key) {
+        $data = _getData (DB_PREFIX.'meta', null, ['meta_key' => $key]);
+        if (! empty($data)) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }

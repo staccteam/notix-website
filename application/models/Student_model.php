@@ -10,7 +10,7 @@ class Student_model extends CI_Model{
     		'first_name'=>$userdata['first_name'],
     		'last_name'=>$userdata['last_name'],
     		'email'=>$userdata['email'],
-            'password'=>$userdata['password'],
+            'password'=>password_hash($userdata['password'], PASSWORD_BCRYPT),
     		'mobile'=>$userdata['mobile'],
     		'enrollment'=>$userdata['enrollment'],
     		'branch_id'=>$userdata['branch_id'],
@@ -31,12 +31,12 @@ class Student_model extends CI_Model{
     	}
     }
 
-    public function login($email){
-        $isPresent = $this->checkEmail($email);
+    public function login($enrollment){
+        $isPresent = $this->checkEnrollment($enrollment);
 
         // if user is present, fetch the user and send it back to the controller
         if ($isPresent){
-            $query = $this->db->get_where(DB_PREFIX.'students', ['email'=>$email]);
+            $query = $this->db->get_where(DB_PREFIX.'students', ['enrollment'=>$enrollment]);
             return $query->result_array();
         }else{
             return false;
@@ -45,21 +45,16 @@ class Student_model extends CI_Model{
     }
 
     // Check if the user with required email is present in the database
-    private function checkEmail($email){
-        $query = $this->db->get_where(DB_PREFIX.'students', ['email'=>$email]);
+    private function checkEnrollment($email){
+        $query = $this->db->get_where(DB_PREFIX.'students', ['enrollment'=>$email]);
         $result = $query->result_array();
 
         if (count($result) == 1){
-            $query = $this->db->get(DB_PREFIX.'students', ['email'=>$email]);
+            $query = $this->db->get(DB_PREFIX.'students', ['enrollment'=>$email]);
             return $query->result_array();
         }else{
             return false;
         }
-    }
-
-    public function get_student_details_by_email($email){
-        $query = $this->db->get(DB_PREFIX.'students', ['email'=>$email]);
-        return $query->result_array();
     }
 
     public function checkRepetition($enrollment){

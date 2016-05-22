@@ -59,8 +59,26 @@ class Process extends CI_Controller{
     	if ($flag) {
     		$this->output->set_output(true);
     	} else {
-    		return false;
+    		return $this->output->set_output(false);
     	}
+    }
+
+    // return student ID by enrollment
+    public function getStudentID ($enrollment) {
+        $data = _getData (DB_PREFIX.'students', 'id', ['enrollment' => $enrollment]);
+        if (! empty($data))
+        {
+            $response = ['response' => $data[0]['id']];
+            $this->output->set_output (json_encode($response));
+        }
+        return;
+    }
+
+    // get meta
+    public function getMeta ($metaKey) {
+        $data = _getData (DB_PREFIX.'meta', null, ['meta_key' => $metaKey]);
+        $jdata = json_encode(['response' => $data]);
+        $this->output->set_output($jdata);
     }
 }
 ?>

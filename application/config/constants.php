@@ -88,4 +88,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 define('PASSWORD_HASH_STRENGTH', 8);
 define('PASSWORD_HASH_PORTABLE', false);
 define('DB_PREFIX', 'notix_');
-define('AUTHORIZATION_KEY', 'AIzaSyBpbNAUw7VjXmeBZzC2kR6MnoDSBH6ET_E'); // server authorization key
+define('AUTHORIZATION_KEY', 'AIzaSyBqqHI33hcPMQ87nnyM24y2V6vVR57cobw'); // server authorization key
