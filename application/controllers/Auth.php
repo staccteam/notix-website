@@ -72,10 +72,10 @@ class Auth extends CI_Controller{
 				_updateData (DB_PREFIX.'students', ['device_gcm_id' => $gcmID], ['enrollment' => $enrollment]);
 			}
 		}
-		$isValid = $this->student_model->login($enrollment);
+		$isPresent = $this->student_model->login($enrollment);
 
-		if ($isValid){
-			if (check_password($password, $isValid[0]['password'])){
+		if (! empty($isPresent)){	
+			if (check_password($password, $isPresent[0]['password'])){
 				$student = _getData (DB_PREFIX.'students', null, ['enrollment' => $enrollment]);
 
 				foreach ($student as $stud){
@@ -85,14 +85,12 @@ class Auth extends CI_Controller{
 					$this->session->set_userdata('stud_enrollment', $stud['enrollment']);
 				}
 
-				if ($this->input->is_ajax_request()){
-					$response = ['response'=>true];
-					$this->output->set_header('Access-Control-Allow-Origin: *');
-					$this->output->set_output(json_encode($response));
-				} 
+				echo 1;
+			} else {
+				echo 0;
 			}
 		}else{
-			return false;
+			echo 0;
 		}
 	}
 

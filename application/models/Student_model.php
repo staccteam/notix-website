@@ -45,12 +45,12 @@ class Student_model extends CI_Model{
     }
 
     // Check if the user with required email is present in the database
-    private function checkEnrollment($email){
-        $query = $this->db->get_where(DB_PREFIX.'students', ['enrollment'=>$email]);
+    private function checkEnrollment($enrollment){
+        $query = $this->db->get_where(DB_PREFIX.'students', ['enrollment'=>$enrollment]);
         $result = $query->result_array();
 
         if (count($result) == 1){
-            $query = $this->db->get(DB_PREFIX.'students', ['enrollment'=>$email]);
+            $query = $this->db->get(DB_PREFIX.'students', ['enrollment'=>$enrollment]);
             return $query->result_array();
         }else{
             return false;

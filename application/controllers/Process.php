@@ -19,7 +19,6 @@ class Process extends CI_Controller{
     public function getBranchNameByID ($branchID) {
         $branch = getBranchNameByID($branchID);
         $branchName = ['branchName' => $branch[0]['branch']];
-        $this->output->set_header ('Access-Control-Allow-Origin: *');
         $this->output->set_output (json_encode($brachName));
         die();
     }
@@ -57,9 +56,11 @@ class Process extends CI_Controller{
     	$userdata = $this->input->post();
     	$flag = $this->student_model->register($userdata);
     	if ($flag) {
-    		$this->output->set_output(true);
+    		echo true;
+            return;
     	} else {
-    		return $this->output->set_output(false);
+    		echo false;
+            return
     	}
     }
 
