@@ -7,6 +7,7 @@
 class Auth extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
+        $this->output->set_header('Access-Control-Allow-Origin: *');
 		$this->load->helper('custom');
 		$this->load->model('student_model');
 		$this->load->model('faculty_model');
@@ -85,7 +86,7 @@ class Auth extends CI_Controller{
 					$this->session->set_userdata('stud_enrollment', $stud['enrollment']);
 				}
 
-				echo 1;
+				$this->output->set_output (json_encode($student));
 			} else {
 				echo 0;
 			}
