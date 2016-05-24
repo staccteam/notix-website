@@ -63,9 +63,9 @@ class Auth extends CI_Controller{
 			return false;
 	}
 	// Authenticate Student Login
-	public function loginStudent($enrollment, $password){
-		// $enrollment = $this->input->post('enrollment');
-		// $password = $this->input->post('password');
+	public function loginStudent(){
+		$enrollment = $this->input->post('enrollment');
+		$password = $this->input->post('password');
 		$gcmID = $this->input->post ('device_gcm_id');
 		if (!empty($gcmID)) {
 			if (! $this->checkGCMID($gcmID)) {
