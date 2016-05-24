@@ -86,7 +86,7 @@ class Auth extends CI_Controller{
 					$this->session->set_userdata('stud_enrollment', $stud['enrollment']);
 				}
 
-				$this->output->set_output (json_encode($student));
+				echo (json_encode($student));
 			} else {
 				echo 0;
 			}
