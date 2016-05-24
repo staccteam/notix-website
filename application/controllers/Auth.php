@@ -85,7 +85,8 @@ class Auth extends CI_Controller{
 					$this->session->set_userdata('stud_mobile', $stud['mobile']);
 					$this->session->set_userdata('stud_enrollment', $stud['enrollment']);
 				}
-
+				$branch = getBranchNameByID ($student[0]['branch_id']);
+				$student[0]['branch_name'] = $branch;
 				echo (json_encode($student));
 			} else {
 				echo 0;
