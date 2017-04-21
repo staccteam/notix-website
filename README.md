@@ -23,8 +23,7 @@ You can check more in the process.php file.
 * [Sass Basics](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
 * [PHP MVC Basics](http://www.sitepoint.com/the-mvc-pattern-and-php-1)
 
-<br>
 **Project by**  
 Stacc (P) Ltd.  
 Jabalpur, IN  
-[contact[at]stacc.co](mailto:contact@stacc.co)
+contact[at]stacc.co
